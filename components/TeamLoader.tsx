@@ -1,11 +1,18 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 type TeamLoaderProps = {
   onContinue: () => void;
 };
 
 export default function TeamLoader({ onContinue }: TeamLoaderProps) {
+  const [showText, setShowText] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowText(true), 1200);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div
       style={{
@@ -18,27 +25,30 @@ export default function TeamLoader({ onContinue }: TeamLoaderProps) {
       }}
     >
       <iframe
-        src="https://my.spline.design/cybersamuraiupdatedmaterial-hZzZBTovoMX0C8GcRH4MlCc3/"
+        src="https://my.spline.design/infinity-EPnzt1Ryey2NGwGztLISXVnP/"
         frameBorder="0"
         width="100%"
         height="100%"
         style={{ border: "none", position: "absolute", top: 0, left: 0 }}
-        title="Spline Cyber Samurai"
+        title="OUR TEAM LOADER"
       />
       <div
         style={{
           width: "100%",
           textAlign: "center",
           padding: "24px 0",
-          color: "#FFD600",
-          fontSize: "1.5rem",
-          fontWeight: 600,
-          letterSpacing: "1px",
-          position: "absolute",
-          bottom: 0,
+          color: "#fff",
+fontSize: "1.5rem",
+fontWeight: 600,
+letterSpacing: "1px",
+fontFamily: "'Montserrat', Arial, sans-serif",
+position: "absolute",
+          bottom: showText ? 0 : "-60px",
           left: 0,
           pointerEvents: "none",
           zIndex: 2,
+          opacity: showText ? 1 : 0,
+          transition: "bottom 0.5s cubic-bezier(.68,-0.55,.27,1.55), opacity 0.5s",
         }}
       >
         Click to continue

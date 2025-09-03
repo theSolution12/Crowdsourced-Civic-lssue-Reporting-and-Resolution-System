@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import RingLoader from "../components/ring-loader/RingLoader";
 import Seo from "../components/Seo";
 import FAQDemo from "../demo/faq-demo";
+import { FeaturesSectionDemo } from "../components/ui/Grid-home";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -61,6 +62,10 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </section>
+      {/* Features Section */}
+      <section>
+        <FeaturesSectionDemo />
       </section>
       {/* FAQ Section */}
       <section>

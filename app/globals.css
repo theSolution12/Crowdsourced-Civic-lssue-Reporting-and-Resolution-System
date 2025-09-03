@@ -120,3 +120,56 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Hero text slide-up animation and helpers */
+@keyframes slide-up {
+  0% {
+    transform: translateY(28px);
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .animate-slide-up {
+    animation: slide-up 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .delay-150 {
+    animation-delay: 150ms;
+  }
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+  /* India forest green textured text */
+  .text-forest {
+    /* Layer 1: organic mottled texture using radial gradients */
+    background-image:
+      radial-gradient(120px 80px at 10% 20%, color-mix(in oklch, #14532d 25%, transparent) 0%, transparent 60%),
+      radial-gradient(100px 60px at 80% 30%, color-mix(in oklch, #064e3b 22%, transparent) 0%, transparent 60%),
+      radial-gradient(80px 40px at 40% 80%, color-mix(in oklch, #166534 18%, transparent) 0%, transparent 60%),
+      /* Layer 2: main lush green gradient */
+      linear-gradient(135deg, #0b7a53 0%, #1b5e20 35%, #2e7d32 65%, #6b8e23 100%);
+    background-size: auto, auto, auto, 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* Slight highlight for readability on busy images */
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  }
+  .text-forest-soft {
+    color: color-mix(in oklch, #d9f99d 85%, white 15%);
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.28);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-slide-up {
+    animation: none;
+  }
+}

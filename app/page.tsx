@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import RingLoader from "../components/ring-loader/RingLoader";
 import Seo from "../components/Seo";
+import FAQDemo from "../demo/faq-demo";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -60,6 +61,10 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </section>
+      {/* FAQ Section */}
+      <section>
+        <FAQDemo />
       </section>
     </>
   );

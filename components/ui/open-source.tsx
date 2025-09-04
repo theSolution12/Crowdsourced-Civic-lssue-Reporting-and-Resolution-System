@@ -3,6 +3,7 @@
 import React from "react";
 import { motion, useMotionValue, useTransform, animate, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import BlurText from "./blurtext";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -179,9 +180,16 @@ function OpenSourceContent({
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4">
-            {title}
-          </h2>
+          <BlurText
+  text={title}
+  delay={150}
+  animateBy="words"
+  direction="top"
+  onAnimationComplete={() => {
+    console.log('Animation completed!');
+  }}
+  className="w-full flex justify-center items-center text-3xl sm:text-6xl font-bold tracking-tight mb-4"
+/>
           <p className="text-xl text-muted-foreground max-w-[800px] mx-auto">
             {description}
           </p>

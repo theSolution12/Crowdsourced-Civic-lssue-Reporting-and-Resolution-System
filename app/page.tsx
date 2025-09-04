@@ -6,6 +6,7 @@ import FAQDemo from "../demo/faq-demo";
 import { FeaturesSectionDemo } from "../components/ui/Grid-home";
 import DarkMirror from "../components/DarkMirror/DarkMirror";
 import PinnedIntro from "../components/PinnedIntro";
+import OpenScDemo from "../demo/opensc-demo";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -31,6 +32,10 @@ export default function Home() {
       {/* Features Section */}
       <section>
         <FeaturesSectionDemo />
+      </section>
+      {/* Open Source Demo Section */}
+      <section>
+        <OpenScDemo />
       </section>
       {/* FAQ Section */}
       <section>

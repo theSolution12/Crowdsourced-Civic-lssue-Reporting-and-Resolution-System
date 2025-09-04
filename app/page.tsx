@@ -5,6 +5,7 @@ import RingLoader from "../components/ring-loader/RingLoader";
 import Seo from "../components/Seo";
 import FAQDemo from "../demo/faq-demo";
 import { FeaturesSectionDemo } from "../components/ui/Grid-home";
+import DarkMirror from "../components/DarkMirror/DarkMirror";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -62,6 +63,10 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </section>
+      {/* Dark Mirror Section (Desktop only) */}
+      <section className="hidden md:block">
+        <DarkMirror />
       </section>
       {/* Features Section */}
       <section>

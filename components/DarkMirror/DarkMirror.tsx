@@ -29,7 +29,7 @@ const AnimatedGreeting = () => (
       Reporting
     </h2>
     <p
-      className="text-2xl md:text-3xl font-light text-gray-700 mb-8"
+      className="text-2xl md:text-3xl font-light italic text-gray-700 mb-8"
       style={{
         fontFamily: 'SF Pro Display, Inter, Arial, sans-serif',
         letterSpacing: '-0.01em',

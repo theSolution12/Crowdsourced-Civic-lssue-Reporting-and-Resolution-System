@@ -102,7 +102,7 @@ export function FeaturesSectionDemo() {
               <div className="h-6 w-6 rounded-full bg-orange-500 border-2 border-white dark:border-blue-950"></div>
             </div>
             <span className="text-sm font-semibold text-blue-700 dark:text-blue-300">
-              Join 10,000+ citizens already making a difference
+              Join 4.06 crore citizens shaping the future and making a difference
             </span>
           </div>
         </div>

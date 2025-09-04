@@ -16,14 +16,18 @@ const PinnedIntro: React.FC<PinnedIntroProps> = ({ className = "" }) => {
 
   const [showText, setShowText] = useState(false);
   const words = [
-    "Accountable Jharkhand",
-    "Transparent Jharkhand",
+    "Accountable Civic Jharkhand",
+    "Transparent Civic Jharkhand",
     "Smart Governance Jharkhand",
-    "Efficient Jharkhand",
-    "Inclusive Jharkhand",
-    "Trustworthy Jharkhand",
-    "Responsive Jharkhand",
+    "Efficient Digital Jharkhand",
+    "Inclusive Civic Jharkhand",
+    "AI-Powered Jharkhand",
+    "Trustworthy Service Jharkhand",
+    "Data-Driven Jharkhand",
+    "Responsive Civic Jharkhand",
+    "Future-Ready Jharkhand",
   ];
+  
   const [wordIndex, setWordIndex] = useState(0);
   const [wordFading, setWordFading] = useState(false);
 
@@ -101,7 +105,7 @@ const PinnedIntro: React.FC<PinnedIntroProps> = ({ className = "" }) => {
 
             {/* CREATE with increasing thickness per letter (responsive) */}
             <div className="flex gap-[0.75rem] sm:gap-3 items-baseline text-white drop-shadow-[0_6px_0_rgba(0,0,0,0.35)] 
-                            text-[clamp(3.6rem,12.5vw,10.5rem)] sm:text-[clamp(5rem,14vw,13rem)] leading-[0.8]">
+                            text-[clamp(4.2rem,15vw,11.5rem)] sm:text-[clamp(5rem,14vw,13rem)] leading-[0.8]">
               <span className={`font-light transition-all duration-900 ease-out ${showText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`} style={{ transitionDelay: '200ms' }}>C</span>
               <span className={`font-light transition-all duration-900 ease-out ${showText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`} style={{ transitionDelay: '380ms' }}>R</span>
               <span className={`font-normal transition-all duration-900 ease-out ${showText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`} style={{ transitionDelay: '560ms' }}>E</span>
@@ -113,7 +117,7 @@ const PinnedIntro: React.FC<PinnedIntroProps> = ({ className = "" }) => {
             {/* Cycling subtext */}
             <div className="mt-5 sm:mt-6 h-8 sm:h-10 overflow-hidden">
               <span
-                className={`inline-block align-top ml-2 sm:ml-3 md:ml-4 text-[#9C9C9C] text-lg sm:text-xl tracking-wide transition-all duration-300 ease-out ${wordFading ? 'opacity-0 -translate-y-1' : 'opacity-100 translate-y-0'}`}
+                className={`inline-block align-top ml-2 sm:ml-3 md:ml-4 text-[#9C9C9C] text-lg sm:text-xl tracking-wide transition-all duration-300 ease-out ${wordFading ? 'opacity-0 translate-y-1' : 'opacity-100 translate-y-0'}`}
                 aria-live="polite"
               >
                 {words[wordIndex]}

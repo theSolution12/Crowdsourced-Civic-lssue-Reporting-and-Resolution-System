@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "team",
+  title: "Team",
 };
 
 export default function TeamLayout({ children }: { children: React.ReactNode }) {

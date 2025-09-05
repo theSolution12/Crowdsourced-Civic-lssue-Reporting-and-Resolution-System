@@ -20,14 +20,14 @@ export default function Dashboard() {
   // Update document title based on the current internal page
   useEffect(() => {
     const map: Record<string, string> = {
-      "/": "dashboard",
-      "/issues": "issues",
-      "/verify": "verify",
-      "/resolved": "resolved",
-      "/team": "team",
-      "/analytics": "analytics",
+      "/": "Dashboard",
+      "/issues": "Issues",
+      "/verify": "Verify",
+      "/resolved": "Resolved",
+      "/team": "Team",
+      "/analytics": "Analytics",
     }
-    const label = map[currentPage] ?? "dashboard"
+    const label = map[currentPage] ?? "Dashboard"
     document.title = `${label} | जनसेतु`
   }, [currentPage])
 

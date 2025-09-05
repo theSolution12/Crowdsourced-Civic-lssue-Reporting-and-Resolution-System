@@ -5,7 +5,7 @@ import { SignupForm } from "@/components/signup-form"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "signup",
+  title: "Signup",
 }
 
 export default function SignupPage() {

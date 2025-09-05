@@ -4,7 +4,7 @@ import { FiGithub } from "react-icons/fi";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "doc",
+  title: "Doc",
 };
 
 export default function DocPage() {

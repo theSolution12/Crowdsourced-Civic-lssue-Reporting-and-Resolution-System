@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useId, useState } from 'react';
+import Image from 'next/image';
 
 export interface GlassSurfaceProps {
   children?: React.ReactNode;
@@ -380,12 +381,12 @@ const GlassSurface: React.FC<GlassSurfaceExtendedProps> = ({
           cursor: "pointer",
         }}
       >
-        <img
+        <Image
           src="/hamburger.png"
           alt="Open navigation"
+          width={32}
+          height={32}
           style={{
-            width: 32,
-            height: 32,
             objectFit: "contain",
             display: "block",
           }}

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 import GlassSurface from "../components/ui/LiquidGlass";
 import SlidingNav from "../components/ui/SlidingNav/SlidingNav";
 
@@ -35,10 +36,12 @@ export default function LiquidGlassDemo() {
             justifyContent: "flex-start",
             width: "100%",
           }}>
-            <img
+            <Image
               src="/menulogo.png"
               alt="Menu Logo"
-              style={{ height: 48, width: 48, marginRight: 18, marginLeft: 0, objectFit: "contain" }}
+              width={48}
+              height={48}
+              style={{ marginRight: 18, marginLeft: 0, objectFit: "contain" }}
             />
           </div>
         </GlassSurface>

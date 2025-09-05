@@ -33,7 +33,7 @@ export default function Home() {
 
   return (
     <>
-      <Seo />
+      <Seo title="जनसेतु | home" />
       <LiquidGlassDemo />
       {/* Show PinnedIntro only on desktop, SihHero only on non-desktop */}
       {isDesktop ? <PinnedIntro /> : <SihHero />}

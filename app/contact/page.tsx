@@ -3,9 +3,15 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import React from "react";
 
+import Head from "next/head";
+
 export default function ContactPage() {
   return (
-    <div className="flex flex-col gap-6 min-h-screen justify-center items-center px-4">
+    <>
+      <Head>
+        <title>जनसेतु | contact</title>
+      </Head>
+      <div className="flex flex-col gap-6 min-h-screen justify-center items-center px-4">
       <form className="flex flex-col gap-6 max-w-md w-full p-8 bg-card rounded-lg shadow-md">
         <div className="flex flex-col items-center gap-2 text-center">
           <h1 className="text-2xl font-bold">Contact Us</h1>
@@ -38,5 +44,6 @@ export default function ContactPage() {
         </div>
       </form>
     </div>
+    </>
   );
 }

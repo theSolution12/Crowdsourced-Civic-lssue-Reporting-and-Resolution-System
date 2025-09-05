@@ -1,10 +1,16 @@
 import React from "react";
 import { FiGithub } from "react-icons/fi";
 
+import Head from "next/head";
+
 export default function DocPage() {
   return (
-    <div
-      style={{
+    <>
+      <Head>
+        <title>जनसेतु | doc</title>
+      </Head>
+      <div
+        style={{
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
@@ -103,5 +109,6 @@ export default function DocPage() {
         for contribution
       </div>
     </div>
+    </>
   );
 }

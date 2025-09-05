@@ -13,6 +13,8 @@ import { ResolvedCasesPage } from "@/components/resolved-cases-page"
 import { DepartmentTeamPage } from "@/components/department-team-page"
 import { AnalyticsPage } from "@/components/analytics-page"
 
+import Head from "next/head"
+
 export default function Dashboard() {
   const [currentPage, setCurrentPage] = useState("/")
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -61,20 +63,25 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="flex min-h-screen bg-white">
-      <DashboardSidebar
-        onNavigate={handleNavigation}
-        currentPage={currentPage}
-        sidebarOpen={sidebarOpen}
-        setSidebarOpen={setSidebarOpen}
-      />
-      <div className="flex-1 flex flex-col md:ml-64">
-        <DashboardHeader onMenuClick={() => setSidebarOpen(true)} />
-        <div className="flex-1">{renderCurrentPage()}</div>
+    <>
+      <Head>
+        <title>जनसेतु | dashboard</title>
+      </Head>
+      <div className="flex min-h-screen bg-white">
+        <DashboardSidebar
+          onNavigate={handleNavigation}
+          currentPage={currentPage}
+          sidebarOpen={sidebarOpen}
+          setSidebarOpen={setSidebarOpen}
+        />
+        <div className="flex-1 flex flex-col md:ml-64">
+          <DashboardHeader onMenuClick={() => setSidebarOpen(true)} />
+          <div className="flex-1">{renderCurrentPage()}</div>
+        </div>
+        {sidebarOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden" onClick={() => setSidebarOpen(false)} />
+        )}
       </div>
-      {sidebarOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden" onClick={() => setSidebarOpen(false)} />
-      )}
-    </div>
+    </>
   )
 }

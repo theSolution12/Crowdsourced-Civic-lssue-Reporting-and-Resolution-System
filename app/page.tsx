@@ -6,15 +6,25 @@ import FAQDemo from "../demo/faq-demo";
 import { FeaturesSectionDemo } from "../components/ui/Grid-home";
 import DarkMirror from "../components/DarkMirror/DarkMirror";
 import PinnedIntro from "../components/PinnedIntro";
+import SihHero from "../components/SihHero";
 import OpenScDemo from "../demo/opensc-demo";
 import LiquidGlassDemo from "../demo/liquidglass-demo";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2000);
-    return () => clearTimeout(timer);
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   if (loading) {
@@ -24,23 +34,18 @@ export default function Home() {
   return (
     <>
       <Seo />
-      {/* LiquidGlass Menu Demo */}
       <LiquidGlassDemo />
-      {/* Scroll-pinned intro where SIH rises over MagicaHands */}
-      <PinnedIntro />
-      {/* Dark Mirror Section (Desktop only) */}
+      {/* Show PinnedIntro only on desktop, SihHero only on non-desktop */}
+      {isDesktop ? <PinnedIntro /> : <SihHero />}
       <section className="hidden md:block">
         <DarkMirror />
       </section>
-      {/* Features Section */}
       <section>
         <FeaturesSectionDemo />
       </section>
-      {/* Open Source Demo Section */}
       <section>
         <OpenScDemo />
       </section>
-      {/* FAQ Section */}
       <section id="faq">
         <FAQDemo />
       </section>

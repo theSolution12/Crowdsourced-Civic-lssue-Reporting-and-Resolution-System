@@ -97,7 +97,7 @@ export const SlidingNav: React.FC<SlidingNavProps> = ({ open, onClose }) => {
             width: open ? "100vw" : "0vw",
             height: "100vh",
             borderRadius: "30px 0 0 30px",
-            background: "rgb(137, 75, 0)",
+            background: "red",
             transition: "width 600ms cubic-bezier(0.86, 0, 0.672, 1.003)",
             zIndex: -2,
           }}
@@ -111,7 +111,7 @@ export const SlidingNav: React.FC<SlidingNavProps> = ({ open, onClose }) => {
             width: open ? "33vw" : "0vw",
             height: "100vh",
             borderRadius: "30px 0 0 30px",
-            background: "rgb(254, 154, 0)",
+            background: "red",
             transition: "width 600ms cubic-bezier(0.86, 0, 0.672, 1.003)",
             zIndex: -1,
           }}
@@ -159,7 +159,7 @@ export const SlidingNav: React.FC<SlidingNavProps> = ({ open, onClose }) => {
             width: open ? "fit-content" : "0",
             height: "100vh",
             borderRadius: "30px 0 0 30px",
-            background: "rgb(255,237,212)",
+            background: "#fff",
             overflow: "hidden",
             listStyle: "none",
             transform: open ? "translateX(0)" : "translateX(100%)",

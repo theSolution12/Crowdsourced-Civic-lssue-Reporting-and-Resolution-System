@@ -164,13 +164,12 @@ export function RecentReports() {
                 </div>
               </div>
               <div className="flex flex-row sm:flex-col items-start sm:items-end space-x-2 sm:space-x-0 sm:space-y-2">
-                <Badge className={statusColors[report.status as keyof typeof statusColors]} size="sm">
+                <Badge className={statusColors[report.status as keyof typeof statusColors]}>
                   {report.status}
                 </Badge>
                 <Badge
                   variant="outline"
                   className={priorityColors[report.priority as keyof typeof priorityColors]}
-                  size="sm"
                 >
                   {report.priority}
                 </Badge>

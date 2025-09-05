@@ -332,7 +332,7 @@ export function ResolvedCasesPage() {
                   <div className="bg-green-50 border border-green-200 p-3 sm:p-4 rounded-lg">
                     <h4 className="font-medium mb-2 text-green-800 text-sm sm:text-base">Citizen Feedback</h4>
                     <p className="text-xs sm:text-sm text-green-700 italic leading-relaxed">
-                      "{case_.citizenFeedback}"
+                      &quot;{case_.citizenFeedback}&quot;
                     </p>
                   </div>
 

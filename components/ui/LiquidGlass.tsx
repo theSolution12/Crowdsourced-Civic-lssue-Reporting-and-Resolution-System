@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useId } from 'react';
+import React, { useEffect, useRef, useId, useState } from 'react';
 
 export interface GlassSurfaceProps {
   children?: React.ReactNode;
@@ -58,7 +58,11 @@ const useDarkMode = () => {
   return isDark;
 };
 
-const GlassSurface: React.FC<GlassSurfaceProps> = ({
+interface GlassSurfaceExtendedProps extends GlassSurfaceProps {
+  onHamburgerClick?: () => void;
+}
+
+const GlassSurface: React.FC<GlassSurfaceExtendedProps> = ({
   children,
   width = 200,
   height = 80,
@@ -78,7 +82,8 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
   yChannel = 'G',
   mixBlendMode = 'difference',
   className = '',
-  style = {}
+  style = {},
+  onHamburgerClick
 }) => {
   const uniqueId = useId().replace(/:/g, '-');
   const filterId = `glass-filter-${uniqueId}`;
@@ -358,6 +363,33 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
           </filter>
         </defs>
       </svg>
+
+      <button
+        type="button"
+        aria-label="Open navigation"
+        onClick={onHamburgerClick}
+        style={{
+          position: "absolute",
+          top: "1rem",
+          right: "1rem",
+          zIndex: 20,
+          background: "transparent",
+          border: "none",
+          padding: "0.5rem",
+          cursor: "pointer",
+        }}
+      >
+        <img
+          src="/hamburger.png"
+          alt="Open navigation"
+          style={{
+            width: 32,
+            height: 32,
+            objectFit: "contain",
+            display: "block",
+          }}
+        />
+      </button>
 
       <div className="w-full h-full flex items-center justify-center p-2 rounded-[inherit] relative z-10">
         {children}

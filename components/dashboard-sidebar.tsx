@@ -2,7 +2,9 @@
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { Home, AlertTriangle, CheckCircle, FileCheck, BarChart3, Users, Settings, UserPlus, Shield } from "lucide-react"
+import { Home, AlertTriangle, CheckCircle, FileCheck, BarChart3, Users, Settings, UserPlus, Shield, Globe } from "lucide-react"
+import Link from "next/link"
+import Image from "next/image"
 
 const navigation = [
   { name: "Dashboard", href: "/", icon: Home },
@@ -44,10 +46,18 @@ export function DashboardSidebar({
     >
       <div className="p-4 border-b">
         <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-            <Home className="w-4 h-4 text-primary-foreground" />
+          <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center overflow-hidden">
+            <Image src="/menulogo.png" alt="jansetu logo" width={32} height={32} />
           </div>
-          <span className="font-semibold text-foreground">CivicResolve</span>
+          <Link
+            href="/"
+            className="font-semibold text-foreground bg-transparent border-none p-0 m-0 cursor-pointer"
+            style={{ background: "none" }}
+            tabIndex={0}
+            aria-label="Go to Home"
+          >
+            जनसेतु
+          </Link>
         </div>
       </div>
 

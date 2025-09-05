@@ -13,6 +13,7 @@ const navLinks = [
   { href: "/doc", label: "Docs" },
   { href: "/login", label: "Login" },
   { href: "/signup", label: "Signup" },
+  { href: "/admin/dashboard", label: "Dashboard" },
 ];
 
 export const SlidingNav: React.FC<SlidingNavProps> = ({ open, onClose }) => {

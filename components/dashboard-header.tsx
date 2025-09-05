@@ -75,10 +75,14 @@ export function DashboardHeader({ onMenuClick }: DashboardHeaderProps) {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                <Avatar className="h-8 w-8">
-                  <AvatarImage src="/civic-officer.jpg" alt="Profile" />
-                  <AvatarFallback>RK</AvatarFallback>
-                </Avatar>
+<Avatar className="h-10 w-10">
+  <AvatarImage
+    src="https://img.freepik.com/free-photo/closeup-young-hispanic-man-casuals-studio_662251-600.jpg"
+    alt="Profile"
+    style={{ transform: "scale(1.18)" }}
+  />
+  <AvatarFallback>RK</AvatarFallback>
+</Avatar>
                 {isHead && (
                   <Badge className="absolute -top-1 -right-1 w-4 h-4 p-0 flex items-center justify-center bg-primary text-primary-foreground">
                     <Shield className="w-2 h-2" />

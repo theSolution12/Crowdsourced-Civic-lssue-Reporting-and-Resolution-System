@@ -370,8 +370,9 @@ const GlassSurface: React.FC<GlassSurfaceExtendedProps> = ({
         onClick={onHamburgerClick}
         style={{
           position: "absolute",
-          top: "1rem",
+          top: "50%",
           right: "1rem",
+          transform: "translateY(-50%)",
           zIndex: 20,
           background: "transparent",
           border: "none",

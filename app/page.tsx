@@ -7,6 +7,7 @@ import { FeaturesSectionDemo } from "../components/ui/Grid-home";
 import DarkMirror from "../components/DarkMirror/DarkMirror";
 import PinnedIntro from "../components/PinnedIntro";
 import OpenScDemo from "../demo/opensc-demo";
+import LiquidGlassDemo from "../demo/liquidglass-demo";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -23,6 +24,8 @@ export default function Home() {
   return (
     <>
       <Seo />
+      {/* LiquidGlass Menu Demo */}
+      <LiquidGlassDemo />
       {/* Scroll-pinned intro where SIH rises over MagicaHands */}
       <PinnedIntro />
       {/* Dark Mirror Section (Desktop only) */}
@@ -38,7 +41,7 @@ export default function Home() {
         <OpenScDemo />
       </section>
       {/* FAQ Section */}
-      <section>
+      <section id="faq">
         <FAQDemo />
       </section>
     </>

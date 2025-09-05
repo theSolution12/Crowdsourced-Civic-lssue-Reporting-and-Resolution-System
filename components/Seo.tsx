@@ -8,8 +8,7 @@ export default function Seo({
 }) {
   return (
     <Head>
-      {/* Basic Meta Tags */}
-      <title>{title}</title>
+      {/* Basic Meta Tags (title is controlled by App Router metadata) */}
       <meta name="description" content={description} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="robots" content="index, follow" />

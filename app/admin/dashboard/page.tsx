@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { DashboardSidebar } from "@/components/dashboard-sidebar"
 import { DashboardHeader } from "@/components/dashboard-header"
 import { OverviewCards } from "@/components/overview-cards"
@@ -13,11 +13,23 @@ import { ResolvedCasesPage } from "@/components/resolved-cases-page"
 import { DepartmentTeamPage } from "@/components/department-team-page"
 import { AnalyticsPage } from "@/components/analytics-page"
 
-import Head from "next/head"
-
 export default function Dashboard() {
   const [currentPage, setCurrentPage] = useState("/")
   const [sidebarOpen, setSidebarOpen] = useState(false)
+
+  // Update document title based on the current internal page
+  useEffect(() => {
+    const map: Record<string, string> = {
+      "/": "dashboard",
+      "/issues": "issues",
+      "/verify": "verify",
+      "/resolved": "resolved",
+      "/team": "team",
+      "/analytics": "analytics",
+    }
+    const label = map[currentPage] ?? "dashboard"
+    document.title = `${label} | जनसेतु`
+  }, [currentPage])
 
   const handleNavigation = (href: string) => {
     setCurrentPage(href)
@@ -64,9 +76,6 @@ export default function Dashboard() {
 
   return (
     <>
-      <Head>
-        <title>जनसेतु | dashboard</title>
-      </Head>
       <div className="flex min-h-screen bg-white">
         <DashboardSidebar
           onNavigate={handleNavigation}

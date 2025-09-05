@@ -8,7 +8,7 @@ const topContributors = [
   {
     name: "Rajesh Kumar",
     role: "Field Inspector",
-    avatar: "/indian-male-inspector.jpg",
+    avatar: "https://img.freepik.com/free-photo/closeup-young-hispanic-man-casuals-studio_662251-600.jpg?semt=ais_incoming&w=740&q=80",
     issues: 156,
     resolved: 134,
     rating: 4.8,
@@ -16,7 +16,7 @@ const topContributors = [
   {
     name: "Priya Sharma",
     role: "Community Volunteer",
-    avatar: "/indian-female-volunteer.jpg",
+    avatar: "https://img.freepik.com/free-photo/indian-woman-posing-cute-stylish-outfit-camera-smiling_482257-122351.jpg",
     issues: 89,
     resolved: 76,
     rating: 4.6,
@@ -24,7 +24,7 @@ const topContributors = [
   {
     name: "Amit Singh",
     role: "Ward Officer",
-    avatar: "/indian-male-officer.jpg",
+    avatar: "https://www.vivahonline.com/profileimages/profile_11%20SDN_01553%20copy.jpg",
     issues: 234,
     resolved: 198,
     rating: 4.9,

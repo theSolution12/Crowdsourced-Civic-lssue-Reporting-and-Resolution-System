@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import TeamLoader from "../../components/TeamLoader";
 import { Hero } from "../../components/ui/void-hero";
+import LiquidGlassDemo from "../../demo/liquidglass-demo";
 
 
 export default function TeamPage() {
@@ -25,12 +26,6 @@ export default function TeamPage() {
     return () => mq.removeEventListener("change", handler);
   }, []);
 
-  const navigationLinks = [
-    { name: "HOME", href: "/" },
-    { name: "WORK", href: "/" },
-    { name: "ABOUT", href: "/" },
-    { name: "CONTACT", href: "/contact" },
-  ];
 
   // While loader is active, show loader on all viewports.
   if (!showMain) {
@@ -46,8 +41,9 @@ export default function TeamPage() {
         microStory={`In this orbit of ideas, We're a team of developers, designers, and problem-solvers working on innovative tech solutions for government services. From concept to deployment, we focus on creating tools that actually work for citizens.
 
 `}
-        links={navigationLinks}
       />
+
+      <LiquidGlassDemo />
 
       <div
         style={{

@@ -41,7 +41,7 @@ export default function Home() {
         <OpenScDemo />
       </section>
       {/* FAQ Section */}
-      <section>
+      <section id="faq">
         <FAQDemo />
       </section>
     </>

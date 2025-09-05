@@ -7,12 +7,10 @@ interface SlidingNavProps {
 }
 
 const navLinks = [
-  { href: "#about", label: "About Us" },
-  { href: "#products", label: "Products" },
-  { href: "#portfolio", label: "Portfolio" },
-  { href: "#services", label: "Services" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#contact", label: "Contact" },
+  { href: "/", label: "Home" },
+  { href: "/team", label: "Team" },
+  { href: "/contact", label: "Contact" },
+  { href: "/doc", label: "Docs" },
 ];
 
 export const SlidingNav: React.FC<SlidingNavProps> = ({ open, onClose }) => {

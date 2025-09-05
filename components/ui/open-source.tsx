@@ -162,7 +162,7 @@ function OpenSourceCard({
 function OpenSourceContent({
   repository,
   contributors,
-  title = "Proudly open-source",
+  title = "Proudly Open-Source",
   description = "Our source code is available on GitHub - feel free to read, review, or contribute to it however you want!",
   buttonText = "Star on GitHub",
 }: Stats & {

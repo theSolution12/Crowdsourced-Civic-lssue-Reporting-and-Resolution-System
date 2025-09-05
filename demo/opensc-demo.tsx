@@ -29,7 +29,7 @@ export default function OpenScDemo() {
             avatar_url: "https://avatars.githubusercontent.com/u/56789012?v=4",
           },
           {
-            login: "Rishav Bro Friend",
+            login: "Anurag Anand",
             avatar_url: "https://avatars.githubusercontent.com/u/67890123?v=4",
           },
         ],

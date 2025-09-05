@@ -33,12 +33,8 @@ export default function Seo({
       {/* Additional Meta Tags */}
       <meta name="theme-color" content="#1f2937" />
 
-      {/* Links - Using Next.js defaults for now */}
+      {/* Links */}
       <link rel="canonical" href={url} />
-      <link rel="icon" href="/favicon.ico" />
-
-      {/* Language */}
-      <html lang="en" />
 
       {/* Basic Website Structured Data */}
       <script

@@ -14,8 +14,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "जनसेतु",
+  title: {
+    default: "जनसेतु",
+    template: "%s | जनसेतु",
+  },
   description: "जनसेतु - Crowdsourced Civic Issue Reporting & Resolution Platform",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/menulogo.png", type: "image/png", sizes: "512x512" },
+    ],
+    shortcut: "/menulogo.png",
+    apple: "/menulogo.png",
+  },
 };
 
 export default function RootLayout({
@@ -25,9 +36,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/menulogo.png" />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

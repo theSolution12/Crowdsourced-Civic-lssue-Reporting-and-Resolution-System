@@ -6,10 +6,10 @@ export default function Seo({
   url = "https://yourdomain.com/",
   image = "https://yourdomain.com/og-image.jpg"
 }) {
+  const pageTitle = title ? title.charAt(0).toUpperCase() + title.slice(1) : title;
   return (
     <Head>
-      {/* Basic Meta Tags */}
-      <title>{title}</title>
+      {/* Basic Meta Tags (title is controlled by App Router metadata) */}
       <meta name="description" content={description} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="robots" content="index, follow" />
@@ -17,7 +17,7 @@ export default function Seo({
       <meta name="keywords" content="civic issues, community reporting, infrastructure problems, potholes, streetlights, waste management, smart city, crowdsourcing, SIH project for government of jharkhand"  />
       
       {/* Open Graph Tags */}
-      <meta property="og:title" content={title} />
+      <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={url} />
@@ -26,19 +26,15 @@ export default function Seo({
 
       {/* Twitter Cards */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={title} />
+      <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
 
       {/* Additional Meta Tags */}
       <meta name="theme-color" content="#1f2937" />
 
-      {/* Links - Using Next.js defaults for now */}
+      {/* Links */}
       <link rel="canonical" href={url} />
-      <link rel="icon" href="/favicon.ico" />
-
-      {/* Language */}
-      <html lang="en" />
 
       {/* Basic Website Structured Data */}
       <script

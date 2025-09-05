@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { DashboardSidebar } from "@/components/dashboard-sidebar"
 import { DashboardHeader } from "@/components/dashboard-header"
 import { OverviewCards } from "@/components/overview-cards"
@@ -16,6 +16,20 @@ import { AnalyticsPage } from "@/components/analytics-page"
 export default function Dashboard() {
   const [currentPage, setCurrentPage] = useState("/")
   const [sidebarOpen, setSidebarOpen] = useState(false)
+
+  // Update document title based on the current internal page
+  useEffect(() => {
+    const map: Record<string, string> = {
+      "/": "Dashboard",
+      "/issues": "Issues",
+      "/verify": "Verify",
+      "/resolved": "Resolved",
+      "/team": "Team",
+      "/analytics": "Analytics",
+    }
+    const label = map[currentPage] ?? "Dashboard"
+    document.title = `${label} | जनसेतु`
+  }, [currentPage])
 
   const handleNavigation = (href: string) => {
     setCurrentPage(href)
@@ -61,20 +75,22 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="flex min-h-screen bg-white">
-      <DashboardSidebar
-        onNavigate={handleNavigation}
-        currentPage={currentPage}
-        sidebarOpen={sidebarOpen}
-        setSidebarOpen={setSidebarOpen}
-      />
-      <div className="flex-1 flex flex-col md:ml-64">
-        <DashboardHeader onMenuClick={() => setSidebarOpen(true)} />
-        <div className="flex-1">{renderCurrentPage()}</div>
+    <>
+      <div className="flex min-h-screen bg-white">
+        <DashboardSidebar
+          onNavigate={handleNavigation}
+          currentPage={currentPage}
+          sidebarOpen={sidebarOpen}
+          setSidebarOpen={setSidebarOpen}
+        />
+        <div className="flex-1 flex flex-col md:ml-64">
+          <DashboardHeader onMenuClick={() => setSidebarOpen(true)} />
+          <div className="flex-1">{renderCurrentPage()}</div>
+        </div>
+        {sidebarOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden" onClick={() => setSidebarOpen(false)} />
+        )}
       </div>
-      {sidebarOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden" onClick={() => setSidebarOpen(false)} />
-      )}
-    </div>
+    </>
   )
 }

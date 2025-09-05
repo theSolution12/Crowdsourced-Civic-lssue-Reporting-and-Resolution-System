@@ -16,6 +16,39 @@ const navLinks = [
 ];
 
 export const SlidingNav: React.FC<SlidingNavProps> = ({ open, onClose }) => {
+  // Add bounce and hover styles for nav links
+  React.useEffect(() => {
+    if (typeof document === "undefined") return;
+    let styleTag = document.getElementById("nav-bounce-style");
+    if (!styleTag) {
+      styleTag = document.createElement("style");
+      styleTag.id = "nav-bounce-style";
+      styleTag.innerHTML = `
+        @keyframes navPopOut {
+          0% {
+            transform: scale(1) translateX(0);
+            color: #222;
+          }
+          60% {
+            transform: scale(1.18) translateX(12px);
+            color: red;
+          }
+          100% {
+            transform: scale(1.12) translateX(8px);
+            color: red;
+          }
+        }
+        #nav-menu a:hover {
+          color: red !important;
+          animation: navPopOut 0.32s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+        }
+      `;
+      document.head.appendChild(styleTag);
+    }
+    return () => {
+      if (styleTag) styleTag.remove();
+    };
+  }, []);
   React.useEffect(() => {
     if (!open) return;
     const handleClick = (e: MouseEvent) => {
@@ -185,6 +218,7 @@ export const SlidingNav: React.FC<SlidingNavProps> = ({ open, onClose }) => {
                   color: "#222",
                   isolation: "isolate",
                   transition: "color 0.2s",
+                  willChange: "transform",
                 }}
                 onClick={onClose}
               >

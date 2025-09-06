@@ -124,9 +124,7 @@ export default function TestimonialDemo() {
       <div className="mx-auto space-y-8">
         <div className="text-center space-y-4 mb-12">
           <h1 className="text-5xl md:text-6xl font-bold text-foreground">
-            <TextAnimate animation="slideLeft" by="character" delay={0.5}>
-              Community Testimonials
-            </TextAnimate>
+            Community Testimonials
           </h1>
           <p className="text-muted-foreground text-lg">
             Hear from our early adopters who helped shape this platform.

@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import RingLoader from "./ring-loader/RingLoader";
 import FAQDemo from "../demo/faq-demo";
 import { FeaturesSectionDemo } from "./ui/Grid-home";
+import { HowItWorks } from "@/components/steps";
 import DarkMirror from "./DarkMirror/DarkMirror";
 import PinnedIntro from "./PinnedIntro";
 import SihHero from "./SihHero";
 import OpenScDemo from "../demo/opensc-demo";
 import LiquidGlassDemo from "../demo/liquidglass-demo";
-import TestimonialDemo from "../demo/hovertesti-demo";
 
 export default function HomeClient() {
   const [loading, setLoading] = useState(true);
@@ -42,11 +42,9 @@ export default function HomeClient() {
       <section>
         <FeaturesSectionDemo />
       </section>
+      <HowItWorks />
       <section>
         <OpenScDemo />
-      </section>
-      <section>
-        <TestimonialDemo />
       </section>
       <section id="faq">
         <FAQDemo />

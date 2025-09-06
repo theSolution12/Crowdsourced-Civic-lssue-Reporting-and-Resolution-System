@@ -1,20 +1,19 @@
 import Image from "next/image"
-
-import { LoginForm } from "@/components/login-form"
-
+import Link from "next/link"
+import { SignIn } from "@clerk/nextjs"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Login",
+  title: "Sign In",
 }
 
-export default function LoginPage() {
+export default function SignInPage() {
   return (
     <>
       <div className="grid min-h-svh lg:grid-cols-2">
         <div className="flex flex-col gap-4 p-6 md:p-10">
           <div className="flex justify-center gap-2 md:justify-start">
-            <a href="#" className="flex items-center gap-2 font-medium">
+            <Link href="/" className="flex items-center gap-2 font-medium">
               <div className="bg-white flex size-10 items-center justify-center rounded-md overflow-hidden">
                 <Image
                   src="/menulogo.png"
@@ -26,11 +25,11 @@ export default function LoginPage() {
                 />
               </div>
               <span className="text-2xl font-bold">जनसेतु.</span>
-            </a>
+            </Link>
           </div>
           <div className="flex flex-1 items-center justify-center">
             <div className="w-full max-w-xs">
-              <LoginForm />
+              <SignIn />
             </div>
           </div>
         </div>

@@ -1,260 +1,183 @@
-# जनसेतु -Crowdsourced Civic Issue Reporting and Resolution System (CCIRRS) 
-## 💖 Support This Project(UPI)
+# Crowdsourced Civic Issue Reporting and Resolution System
 
-If you find this project helpful and want to support open-source development for better governance, consider making a donation:
+A modern, production-ready civic issue reporting platform built with Next.js, Clerk authentication, and Supabase database integration.
 
-[![Donate](https://img.shields.io/badge/Donate-Support%20Development-ff69b4?style=for-the-badge&logo=heart&logoColor=white)](https://portfolio.raj.software/donate)
+## 🚀 Features
 
-*Your support helps maintain and improve this civic technology platform! 🙏*
+- **Secure Authentication**: Complete Clerk + Supabase integration with social login support
+- **User Management**: Automatic user data synchronization between Clerk and Supabase
+- **Row Level Security**: Production-ready database security with JWT-based policies
+- **Modern UI**: Beautiful, responsive interface built with shadcn/ui components
+- **Real-time Sync**: Automatic user profile synchronization with error handling
+- **Production Ready**: Security-hardened with performance optimizations
 
+## 🛡️ Security
 
-## Smart India Hackathon 2025 Project
+- ✅ Row Level Security (RLS) enabled on all tables
+- ✅ Secure JWT-based authentication policies
+- ✅ Service role isolation for admin operations
+- ✅ Secure database function configurations
+- ✅ All security advisors resolved
 
-A comprehensive digital platform designed for the **Government of Jharkhand** to revolutionize civic issue reporting and resolution. This system empowers citizens to directly report infrastructure problems, track progress, and collaborate with authorities to build better communities.
+## 🏗️ Architecture
 
+### Authentication Flow
+1. Users sign in/up through Clerk (supports Google, GitHub, email)
+2. User data automatically syncs to Supabase database
+3. JWT tokens contain user claims for database authorization
+4. RLS policies ensure users can only access their own data
 
+### Tech Stack
+- **Frontend**: Next.js 14 with TypeScript
+- **Authentication**: Clerk
+- **Database**: Supabase (PostgreSQL)
+- **UI Components**: shadcn/ui + Tailwind CSS
+- **Deployment**: Vercel (recommended)
 
-## 📋 Table of Contents
-
-- [Overview](#overview)
-- [Problem Statement](#problem-statement)
-- [Key Features](#key-features)
-- [Technology Stack](#technology-stack)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [SIH Alignment](#sih-alignment)
-- [License](#license)
-
-## 🎯 Overview
-
-The **Crowdsourced Civic Issue Reporting and Resolution System (CCIRRS)** addresses the critical gap between citizens and government services in Jharkhand. By leveraging modern web technologies, this platform creates a transparent, efficient, and user-friendly solution for civic issue management.
-
-### Core Objectives
-
-- **Empower Citizens**: Enable easy reporting of civic issues through mobile and web interfaces
-- **Enhance Transparency**: Provide real-time tracking and updates on issue resolution
-- **Improve Efficiency**: Streamline the workflow for government departments and officials
-- **Build Community**: Foster collaborative problem-solving between citizens and authorities
-- **Drive Digital Governance**: Support Jharkhand's digital transformation initiatives
-
-## 💡 Problem Statement
-
-Traditional civic issue reporting in Jharkhand faces several challenges:
-- Lack of centralized reporting system
-- Poor communication between citizens and authorities
-- Limited transparency in issue resolution
-- Inefficient departmental coordination
-- No systematic tracking of civic problems
-
-Our solution addresses these challenges by providing a modern, accessible, and comprehensive digital platform.
-
-## ✨ Key Features
-
-### For Citizens
-- **📱 Mobile-First Design**: Optimized for smartphones with offline capability
-- **📸 Photo Evidence Support**: Capture and upload images directly from devices
-- **📍 GPS Location Integration**: Automatic location detection for precise issue reporting
-- **🔔 Real-Time Notifications**: Instant updates on issue status and progress
-- **👥 Community Dashboard**: View issues reported in your area
-- **🔒 Secure Authentication**: Government-grade security for personal data protection
-
-### For Administrators
-- **📊 Comprehensive Dashboard**: Overview of all reported issues with analytics
-- **✅ Verification System**: Multi-stage verification process for reported issues
-- **👨‍💼 Department Management**: Role-based access for different government departments
-- **📈 Analytics & Insights**: Track resolution rates and civic improvements
-- **🗺️ Interactive Maps**: Geographic visualization of issues across Jharkhand
-- **⏰ SLA Management**: Service Level Agreement tracking and notifications
-
-### Issue Categories Supported
-- **🛣️ Road Infrastructure**: Potholes, damaged roads, traffic signals
-- **💡 Electricity**: Streetlight failures, power outages
-- **💧 Water Supply**: Pipeline issues, water quality problems
-- **🗑️ Waste Management**: Garbage collection, illegal dumping
-- **🌳 Environmental**: Pollution, tree management
-- **🏛️ Public Facilities**: Parks, government buildings maintenance
-
-## 🛠️ Technology Stack
-
-### Frontend
-- **Framework**: Next.js 15.5.2 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS 4.x
-- **UI Components**: Radix UI primitives
-- **Animations**: Framer Motion, GSAP
-- **3D Graphics**: Three.js, React Three Fiber
-- **Icons**: Tabler Icons, Lucide React
-
-### Development Tools
-- **Bundler**: Turbopack (Next.js)
-- **Linting**: ESLint 9
-- **Package Manager**: npm
-- **Version Control**: Git
-
-### Additional Features
-- **Fonts**: Geist and Geist Mono (Google Fonts)
-- **Responsive Design**: Mobile-first approach
-- **Progressive Web App**: Offline functionality
-- **Accessibility**: WCAG 2.1 compliant
-
-## 🚀 Installation
+## 🚀 Quick Start
 
 ### Prerequisites
 - Node.js 18+ 
-- npm 8+
-- Git
+- Clerk account
+- Supabase project
 
-### Setup Instructions
+### Installation
 
-1. **Clone the repository**
-```bash
-git clone https://github.com/TheRaj71/Crowdsourced-Civic-lssue-Reporting-and-Resolution-System.git
-cd Crowdsourced-Civic-lssue-Reporting-and-Resolution-System
+1. **Clone and install dependencies**
+   ```bash
+   git clone <your-repo-url>
+   cd Crowdsourced-Civic-lssue-Reporting-and-Resolution-System
+   npm install
+   ```
+
+2. **Set up environment variables**
+   ```bash
+   cp .env.example .env.local
+   ```
+   
+   Add your keys to `.env.local`:
+   ```bash
+   # Clerk Configuration
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
+   CLERK_SECRET_KEY=sk_test_...
+   NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+   NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+   
+   # Supabase Configuration
+   NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbG...
+   SUPABASE_SERVICE_ROLE_KEY=eyJhbG...
+   ```
+
+3. **Configure Supabase**
+   - Database schema and policies are automatically applied
+   - Add Clerk domain to `supabase/config.toml`:
+     ```toml
+     [auth.third_party.clerk]
+     enabled = true
+     domain = "your-app.clerk.accounts.dev"
+     ```
+
+4. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+## 📱 Usage
+
+### User Authentication
+- Visit `/sign-in` or `/sign-up` for authentication
+- Supports email/password and social login (Google, GitHub)
+- Users are automatically redirected after successful authentication
+
+### User Profile
+- Visit `/profile` to view synced user information
+- Real-time sync status with error handling
+- Displays connected social accounts and verification status
+
+### API Endpoints
+- `POST /api/sync-user` - Manually trigger user sync
+- `GET /api/sync-user` - Get sync status and user info
+
+## 🔧 Development
+
+### Key Components
+
+- **`UserProfile`** - Production-ready user profile component
+- **`useUserSync`** - React hook for automatic user synchronization
+- **`syncUserToSupabase`** - Core sync logic with error handling
+- **API Routes** - Secure endpoints for user operations
+
+### Database Schema
+
+```sql
+CREATE TABLE public.users (
+  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  clerk_id text NOT NULL UNIQUE,
+  email text NOT NULL,
+  first_name text,
+  last_name text,
+  username text,
+  image_url text,
+  social_accounts jsonb,
+  email_verified boolean DEFAULT false,
+  phone_number text,
+  created_at timestamptz DEFAULT now(),
+  updated_at timestamptz DEFAULT now()
+);
 ```
 
-2. **Install dependencies**
-```bash
-npm install
-```
+## 🚀 Production Deployment
 
-3. **Environment Setup**
-```bash
-# Create environment file (if needed)
-cp .env.example .env.local
-```
+### Vercel Deployment (Recommended)
+1. Connect GitHub repository to Vercel
+2. Add production environment variables
+3. Deploy automatically on push to main
 
-4. **Run development server**
-```bash
-npm run dev
-```
+### Security Configuration
+- Update Clerk domain in Supabase config
+- Configure production JWT claims
+- Add production domains to Supabase allowed origins
 
-5. **Open in browser**
-Navigate to [http://localhost:3000](http://localhost:3000)
+### Performance Features
+- Database indexes for optimal query performance
+- Automatic user data caching
+- Optimized RLS policies
 
-### Build for Production
-```bash
-npm run build
-npm start
-```
+See [Production Deployment Guide](./docs/production-deployment.md) for detailed instructions.
 
-### Linting
-```bash
-npm run lint
-```
+## 📊 Monitoring
 
-## 📖 Usage
-
-### For Citizens
-
-1. **Registration/Login**
-   - Create account with mobile number verification
-   - Secure authentication with government standards
-
-2. **Report an Issue**
-   - Click "Report New Issue" on homepage
-   - Select issue category (Road, Water, Electricity, etc.)
-   - Add description and photos
-   - Provide precise location
-   - Submit with automatic ticket generation
-
-3. **Track Progress**
-   - Receive unique ticket number
-   - Get real-time notifications
-   - View status updates and comments
-   - Rate resolution quality
-
-### For Administrators
-
-1. **Dashboard Access**
-   - Login with admin credentials
-   - Access comprehensive issue overview
-   - Monitor department-wise statistics
-
-2. **Issue Management**
-   - Review newly reported issues
-   - Verify and categorize issues
-   - Assign to appropriate departments
-   - Track resolution progress
-   - Generate reports and analytics
-
-## 📁 Project Structure
-
-```
-├── app/                    # Next.js App Router pages
-│   ├── admin/             # Admin dashboard pages
-│   ├── login/             # Authentication pages
-│   ├── signup/            # User registration
-│   └── verify/            # Issue verification
-├── components/            # Reusable React components
-│   ├── ui/               # UI component library
-│   ├── dashboard-*.tsx   # Dashboard components
-│   └── *-page.tsx        # Page-specific components
-├── demo/                 # Demo components and examples
-├── lib/                  # Utility functions
-├── public/               # Static assets
-└── README.md            # Project documentation
-```
+The system includes built-in monitoring for:
+- User sync success/failure rates
+- Authentication errors
+- Database performance
+- API endpoint response times
 
 ## 🤝 Contributing
 
-We welcome contributions from the developer community! Here's how you can help:
-
-### Getting Started
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
 4. Push to branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-### Code Guidelines
-- Follow TypeScript best practices
-- Use ESLint configuration provided
-- Write meaningful commit messages
-- Include tests for new features
-- Update documentation as needed
+## 📄 License
 
-### Issue Categories for Contributors
-- 🐛 Bug fixes
-- ✨ New features
-- 📝 Documentation improvements
-- 🎨 UI/UX enhancements
-- ⚡ Performance optimizations
-- 🔧 Configuration updates
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🎯 SIH Alignment
+## 🆘 Support
 
-This project directly addresses **Smart India Hackathon 2024** objectives:
+- **Documentation**: Check the `docs/` folder for detailed guides
+- **Issues**: Report bugs using GitHub Issues
+- **Security**: Follow responsible disclosure for security issues
 
-### Problem Category: E-Governance
-- **Digital India Initiative**: Supporting India's digital transformation
-- **Citizen Empowerment**: Direct citizen-government interaction platform
-- **Transparent Governance**: Real-time tracking and accountability
-- **Scalable Solution**: Designed for statewide deployment in Jharkhand
+## 🔗 Related Documentation
 
-### Innovation Highlights
-- **Cultural Integration**: UI reflects Jharkhand's rich cultural heritage
-- **Accessibility**: Multi-language support for local communities
-- **Sustainability**: Environmentally conscious issue categorization
-- **Social Impact**: Measurable improvement in civic infrastructure
-
-### Evaluation Criteria Met
-- ✅ **Technical Innovation**: Modern web technologies and mobile-first approach
-- ✅ **Scalability**: Cloud-ready architecture for millions of users
-- ✅ **User Experience**: Intuitive design for all age groups
-- ✅ **Social Impact**: Direct improvement in quality of life
-- ✅ **Feasibility**: Ready for immediate deployment
-
-## 📜 License
-
-This project is part of Smart India Hackathon 2025 and is intended for the Government of Jharkhand. All rights reserved.
+- [Clerk + Supabase Integration Guide](./docs/clerk-supabase-integration.md)
+- [Production Deployment Guide](./docs/production-deployment.md)
+- [API Documentation](./docs/api-documentation.md)
 
 ---
 
-**Developed with ❤️ for the people of Jharkhand**
-
-*For technical support or queries, please contact the development team.*
-
-
-**जय हिन्द | जय झारखण्ड**
+Built with ❤️ for civic engagement and community improvement.

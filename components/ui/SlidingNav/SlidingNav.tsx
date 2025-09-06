@@ -15,6 +15,7 @@ const baseNavLinks = [
 ];
 
 const authNavLinks = [
+  { href: "/profile", label: "Profile" },
   { href: "/admin/dashboard", label: "Dashboard" },
 ];
 

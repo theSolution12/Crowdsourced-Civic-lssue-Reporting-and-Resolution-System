@@ -1,16 +1,74 @@
 'use client'
 
+import { useState } from 'react'
 import { useUser } from '@clerk/nextjs'
 import { useUserSync } from '@/lib/hooks/useUserSync'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Separator } from '@/components/ui/separator'
-import { CheckCircle, XCircle, Loader2, User, Mail, Phone, Calendar } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { CheckCircle, XCircle, Loader2, User, Mail, Phone, Calendar, Edit2 } from 'lucide-react'
 
 export function UserProfile() {
   const { user, isLoaded } = useUser()
   const syncStatus = useUserSync()
+  const [isEditingUsername, setIsEditingUsername] = useState(false)
+  const [newUsername, setNewUsername] = useState('')
+  const [usernameLoading, setUsernameLoading] = useState(false)
+  const [usernameError, setUsernameError] = useState('')
+  const [usernameSuccess, setUsernameSuccess] = useState('')
+
+  const handleEditUsername = () => {
+    setNewUsername(user?.username || '')
+    setIsEditingUsername(true)
+    setUsernameError('')
+    setUsernameSuccess('')
+  }
+
+  const handleSaveUsername = async () => {
+    if (!newUsername.trim()) {
+      setUsernameError('Username cannot be empty')
+      return
+    }
+
+    setUsernameLoading(true)
+    setUsernameError('')
+
+    try {
+      const response = await fetch('/api/update-username', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username: newUsername.trim() }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to update username')
+      }
+
+      setUsernameSuccess('Username updated successfully!')
+      setIsEditingUsername(false)
+      
+      // Reload user data from Clerk
+      await user?.reload()
+    } catch (error) {
+      setUsernameError(error instanceof Error ? error.message : 'Failed to update username')
+    } finally {
+      setUsernameLoading(false)
+    }
+  }
+
+  const handleCancelUsername = () => {
+    setIsEditingUsername(false)
+    setNewUsername('')
+    setUsernameError('')
+    setUsernameSuccess('')
+  }
 
   if (!isLoaded) {
     return (
@@ -102,11 +160,64 @@ export function UserProfile() {
           <div>
             <h3 className="font-semibold mb-3">Basic Information</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="flex items-center gap-2">
-                <User className="h-4 w-4 text-muted-foreground" />
-                <span className="text-sm">
-                  <strong>Username:</strong> {user.username || 'Not set'}
-                </span>
+              <div className="col-span-full">
+                <div className="flex items-center gap-2 mb-2">
+                  <User className="h-4 w-4 text-muted-foreground" />
+                  <span className="text-sm font-medium">Username</span>
+                </div>
+                
+                {!isEditingUsername ? (
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm bg-muted px-2 py-1 rounded">
+                      {user.username || 'Not set'}
+                    </span>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={handleEditUsername}
+                      className="h-6 px-2"
+                    >
+                      <Edit2 className="h-3 w-3" />
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <Input
+                        value={newUsername}
+                        onChange={(e) => setNewUsername(e.target.value)}
+                        placeholder="Enter username"
+                        className="max-w-xs"
+                        disabled={usernameLoading}
+                      />
+                      <Button
+                        size="sm"
+                        onClick={handleSaveUsername}
+                        disabled={usernameLoading}
+                      >
+                        {usernameLoading ? (
+                          <Loader2 className="h-3 w-3 animate-spin" />
+                        ) : (
+                          'Save'
+                        )}
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={handleCancelUsername}
+                        disabled={usernameLoading}
+                      >
+                        Cancel
+                      </Button>
+                    </div>
+                    {usernameError && (
+                      <p className="text-xs text-red-600">{usernameError}</p>
+                    )}
+                    {usernameSuccess && (
+                      <p className="text-xs text-green-600">{usernameSuccess}</p>
+                    )}
+                  </div>
+                )}
               </div>
               
               <div className="flex items-center gap-2">

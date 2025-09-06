@@ -1,10 +1,18 @@
-# Crowdsourced Civic Issue Reporting and Resolution System (CCIRRS)
+# जनसेतु -Crowdsourced Civic Issue Reporting and Resolution System (CCIRRS) 
+## 💖 Support This Project(UPI)
 
-*जनसेतु - Connecting Citizens with Governance*
+If you find this project helpful and want to support open-source development for better governance, consider making a donation:
 
-## 🚀 Smart India Hackathon 2025 Project
+[![Donate](https://img.shields.io/badge/Donate-Support%20Development-ff69b4?style=for-the-badge&logo=heart&logoColor=white)](https://portfolio.raj.software/donate)
+
+*Your support helps maintain and improve this civic technology platform! 🙏*
+
+
+## Smart India Hackathon 2025 Project
 
 A comprehensive digital platform designed for the **Government of Jharkhand** to revolutionize civic issue reporting and resolution. This system empowers citizens to directly report infrastructure problems, track progress, and collaborate with authorities to build better communities.
+
+
 
 ## 📋 Table of Contents
 
@@ -247,5 +255,6 @@ This project is part of Smart India Hackathon 2025 and is intended for the Gover
 **Developed with ❤️ for the people of Jharkhand**
 
 *For technical support or queries, please contact the development team.*
+
 
 **जय हिन्द | जय झारखण्ड**

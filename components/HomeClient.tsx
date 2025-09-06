@@ -9,6 +9,7 @@ import PinnedIntro from "./PinnedIntro";
 import SihHero from "./SihHero";
 import OpenScDemo from "../demo/opensc-demo";
 import LiquidGlassDemo from "../demo/liquidglass-demo";
+import TestimonialDemo from "../demo/hovertesti-demo";
 
 export default function HomeClient() {
   const [loading, setLoading] = useState(true);
@@ -45,6 +46,9 @@ export default function HomeClient() {
       <HowItWorks />
       <section>
         <OpenScDemo />
+      </section>
+      <section>
+        <TestimonialDemo />
       </section>
       <section id="faq">
         <FAQDemo />

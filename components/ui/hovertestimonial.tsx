@@ -85,7 +85,7 @@ export const TestimonialShowcase: React.FC<TestimonialShowcaseProps> = ({
   };
 
   return (
-    <div className={cn('w-full select-none max-w-4xl mx-auto space-y-8', className)}>
+    <div className={cn('w-full select-none max-w-6xl mx-auto space-y-6 sm:space-y-8', className)}>
       {/* Main Testimonial Card */}
       <div
         ref={cardRef}
@@ -93,7 +93,7 @@ export const TestimonialShowcase: React.FC<TestimonialShowcaseProps> = ({
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={handleCardClick}
-        className="group relative overflow-hidden rounded-2xl border shadow-xs shadow-white/50 border-border/20 bg-background/80 backdrop-blur-sm transition-all duration-700 hover:border-yellow-400/60 cursor-pointer"
+        className="group relative overflow-hidden rounded-2xl border shadow-xs shadow-yellow-400/30 border-yellow-400/60 bg-background/80 backdrop-blur-sm transition-all duration-700 hover:border-yellow-400 hover:shadow-yellow-400/50 cursor-pointer w-full"
       >
         {/* Dotted texture overlay */}
         <div 
@@ -113,10 +113,10 @@ export const TestimonialShowcase: React.FC<TestimonialShowcaseProps> = ({
         />
         
         {/* Card content */}
-        <div className="relative z-10 p-8 md:p-12 aspect-video transition-colors duration-300 rounded-2xl flex flex-col justify-center">
+        <div className="relative z-10 p-6 sm:p-8 md:p-12 min-h-[300px] sm:min-h-[350px] md:min-h-[400px] transition-colors duration-300 rounded-2xl flex flex-col justify-center">
           {/* Quote with blur animation */}
             <q className={cn(
-              'text-3xl md:text-5xl lg:text-6xl font-medium leading-11 md:leading-relaxed tracking-wide text-center text-foreground/95 mt-auto transition-all duration-500',
+              'text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed tracking-wide text-center text-foreground/95 flex-1 flex items-center justify-center transition-all duration-500 px-2',
               isAnimating ? 'blur-sm opacity-0 translate-y-4' : 'blur-0 opacity-100 translate-y-0'
             )}>
               {activeTestimonial.quote}
@@ -124,20 +124,20 @@ export const TestimonialShowcase: React.FC<TestimonialShowcaseProps> = ({
 
           {/* Author Section with blur animation */}
           <div className={cn(
-            'flex items-center mt-auto justify-between transition-all duration-500',
+            'flex flex-col sm:flex-row items-center sm:justify-between gap-4 mt-8 transition-all duration-500',
             isAnimating ? 'blur-sm opacity-0 translate-y-4' : 'blur-0 opacity-100 translate-y-0'
           )}>
             <div className="flex items-center gap-4">
-              <Avatar className="h-14 w-14 border-2 border-primary/20 rounded-lg shadow-xs shadow-white/50 transition-all duration-300 group-hover:border-yellow-400/40">
+              <Avatar className="h-12 w-12 sm:h-14 sm:w-14 border-2 border-primary/20 rounded-lg shadow-xs shadow-white/50 transition-all duration-300 group-hover:border-yellow-400/40">
                 <AvatarImage src={activeTestimonial.author.avatar} alt={activeTestimonial.author.name} />
-                <AvatarFallback className="bg-muted text-muted-foreground font-semibold text-lg">
+                <AvatarFallback className="bg-muted text-muted-foreground font-semibold text-base sm:text-lg">
                   {activeTestimonial.author.initials || 
                    activeTestimonial.author.name.split(' ').map(n => n[0]).join('').toUpperCase()}
                 </AvatarFallback>
               </Avatar>
               
-              <div>
-                <div className="font-semibold text-foreground text-lg">
+              <div className="text-center sm:text-left">
+                <div className="font-semibold text-foreground text-base sm:text-lg">
                   {activeTestimonial.author.name}
                 </div>
                 {activeTestimonial.author.title && (
@@ -170,41 +170,75 @@ export const TestimonialShowcase: React.FC<TestimonialShowcaseProps> = ({
         </div>
       </div>
 
-      {/* Supporters Grid */}
-      <div className="space-y-4">
-        <div className="grid grid-cols-8 sm:grid-cols-12 md:grid-cols-16 gap-2 md:gap-4">
-          {testimonials.map((testimonial, index) => {
+      {/* Supporters Grid - Fixed to prevent horizontal overflow */}
+      <div className="space-y-4 w-full overflow-hidden">
+        <div className="grid grid-cols-6 xs:grid-cols-8 sm:grid-cols-10 md:grid-cols-12 lg:grid-cols-14 xl:grid-cols-16 gap-1 sm:gap-2 md:gap-3 w-full">
+          {testimonials.slice(0, 16).map((testimonial, index) => {
             const isActive = index === activeIndex;
             return (
               <button
                 key={testimonial.id}
                 onClick={() => switchTestimonial(index)}
                 className={cn(
-                  'aspect-square transition-all duration-300 hover:scale-110 hover:z-10 relative group/avatar',
-                  isActive && 'scale-110 z-10'
+                  'aspect-square transition-all duration-300 hover:scale-105 hover:z-10 relative group/avatar w-full',
+                  isActive && 'scale-105 z-10'
                 )}
               >
                 <Avatar className={cn(
-                  'h-full w-full shadow-xs shadow-white/50 border-1 rounded-none transition-all duration-300',
-                  isActive 
-                    ? 'border-yellow-400 shadow-lg shadow-yellow-400/25' 
-                    : 'border-border/20 hover:border-yellow-400/40'
+                  'h-full w-full shadow-xs shadow-white/50 border border-border/20 rounded-lg transition-all duration-300',
+                  'hover:border-yellow-400/40'
                 )}>
                   <AvatarImage src={testimonial.author.avatar} alt={testimonial.author.name} />
-                  <AvatarFallback className="bg-muted text-[10px] font-medium">
+                  <AvatarFallback className="bg-muted text-[8px] sm:text-[10px] font-medium">
                     {testimonial.author.initials || 
                      testimonial.author.name.split(' ').map(n => n[0]).join('').toUpperCase()}
                   </AvatarFallback>
                 </Avatar>
                 
-                {/* Hover tooltip */}
-                <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-popover text-popover-foreground text-xs px-2 py-1 rounded opacity-0 group-hover/avatar:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-20 border shadow-lg">
+                {/* Name label - Always visible on desktop */}
+                <div className="hidden sm:block absolute -top-10 left-1/2 transform -translate-x-1/2 bg-popover text-popover-foreground text-xs px-2 py-1 rounded opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-20 border shadow-lg">
                   {testimonial.author.name}
                 </div>
               </button>
             );
           })}
         </div>
+        
+        {/* Show remaining testimonials in a second row if there are more than 16 */}
+        {testimonials.length > 16 && (
+          <div className="grid grid-cols-6 xs:grid-cols-8 sm:grid-cols-10 md:grid-cols-12 lg:grid-cols-14 xl:grid-cols-16 gap-1 sm:gap-2 md:gap-3 w-full">
+            {testimonials.slice(16).map((testimonial, index) => {
+              const actualIndex = index + 16;
+              const isActive = actualIndex === activeIndex;
+              return (
+                <button
+                  key={testimonial.id}
+                  onClick={() => switchTestimonial(actualIndex)}
+                  className={cn(
+                    'aspect-square transition-all duration-300 hover:scale-105 hover:z-10 relative group/avatar w-full',
+                    isActive && 'scale-105 z-10'
+                  )}
+                >
+                  <Avatar className={cn(
+                    'h-full w-full shadow-xs shadow-white/50 border border-border/20 rounded-lg transition-all duration-300',
+                    'hover:border-yellow-400/40'
+                  )}>
+                    <AvatarImage src={testimonial.author.avatar} alt={testimonial.author.name} />
+                    <AvatarFallback className="bg-muted text-[8px] sm:text-[10px] font-medium">
+                      {testimonial.author.initials || 
+                       testimonial.author.name.split(' ').map(n => n[0]).join('').toUpperCase()}
+                    </AvatarFallback>
+                  </Avatar>
+                  
+                  {/* Name label - Always visible on desktop */}
+                  <div className="hidden sm:block absolute -top-10 left-1/2 transform -translate-x-1/2 bg-popover text-popover-foreground text-xs px-2 py-1 rounded opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-20 border shadow-lg">
+                    {testimonial.author.name}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       <style jsx>{`
@@ -213,5 +247,6 @@ export const TestimonialShowcase: React.FC<TestimonialShowcaseProps> = ({
           100% { background-position: -200% -200%; }
         }
       `}</style>
-    </div>)
+    </div>
+  );
 }

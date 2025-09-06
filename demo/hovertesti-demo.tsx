@@ -120,20 +120,18 @@ const testimonials = generateTestimonials();
 
 export default function TestimonialDemo() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted/10 to-background p-6 w-full">
-      <div className="mx-auto space-y-8">
+    <div className="bg-gradient-to-br from-background via-muted/10 to-background py-12 px-4 sm:px-6 w-full overflow-hidden">
+      <div className="max-w-6xl mx-auto space-y-8">
         <div className="text-center space-y-4 mb-12">
-          <h1 className="text-5xl md:text-6xl font-bold text-foreground">
-            <TextAnimate animation="slideLeft" by="character" delay={0.5}>
-              Community Testimonials
-            </TextAnimate>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
+            Community Testimonials
           </h1>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
             Hear from our early adopters who helped shape this platform.
           </p>
         </div>
 
-        <div className="text-base md:text-lg">
+        <div className="w-full">
           <TestimonialShowcase 
             testimonials={testimonials}
             defaultTestimonialId="1"

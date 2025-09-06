@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import RingLoader from "./ring-loader/RingLoader";
 import FAQDemo from "../demo/faq-demo";
 import { FeaturesSectionDemo } from "./ui/Grid-home";
+import { HowItWorks } from "@/components/steps";
 import DarkMirror from "./DarkMirror/DarkMirror";
 import PinnedIntro from "./PinnedIntro";
 import SihHero from "./SihHero";
@@ -42,6 +43,7 @@ export default function HomeClient() {
       <section>
         <FeaturesSectionDemo />
       </section>
+      <HowItWorks />
       <section>
         <OpenScDemo />
       </section>

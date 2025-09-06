@@ -2,7 +2,7 @@
 
 *जनसेतु - Connecting Citizens with Governance*
 
-## 🚀 Smart India Hackathon 2024 Project
+## 🚀 Smart India Hackathon 2025 Project
 
 A comprehensive digital platform designed for the **Government of Jharkhand** to revolutionize civic issue reporting and resolution. This system empowers citizens to directly report infrastructure problems, track progress, and collaborate with authorities to build better communities.
 

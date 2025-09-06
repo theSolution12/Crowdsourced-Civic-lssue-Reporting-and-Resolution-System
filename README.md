@@ -240,7 +240,7 @@ This project directly addresses **Smart India Hackathon 2024** objectives:
 
 ## 📜 License
 
-This project is part of Smart India Hackathon 2024 and is intended for the Government of Jharkhand. All rights reserved.
+This project is part of Smart India Hackathon 2025 and is intended for the Government of Jharkhand. All rights reserved.
 
 ---
 

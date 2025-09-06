@@ -1,19 +1,25 @@
 // SlidingNav.tsx
 import React from "react";
+import { useUser, SignedIn, SignedOut } from "@clerk/nextjs";
 
 interface SlidingNavProps {
   open: boolean;
   onClose: () => void;
 }
 
-const navLinks = [
+const baseNavLinks = [
   { href: "/", label: "Home" },
   { href: "/team", label: "Team" },
   { href: "/contact", label: "Contact" },
   { href: "/doc", label: "Docs" },
-  { href: "/login", label: "Login" },
-  { href: "/signup", label: "Signup" },
+];
+
+const authNavLinks = [
   { href: "/admin/dashboard", label: "Dashboard" },
+];
+
+const publicNavLinks = [
+  { href: "/sign-in", label: "Login" },
 ];
 
 export const SlidingNav: React.FC<SlidingNavProps> = ({ open, onClose }) => {
@@ -67,7 +73,10 @@ export const SlidingNav: React.FC<SlidingNavProps> = ({ open, onClose }) => {
       document.head.appendChild(styleTag);
     }
     return () => {
-      if (styleTag) styleTag.remove();
+      const existingStyleTag = document.getElementById("nav-bounce-style");
+      if (existingStyleTag && existingStyleTag.parentNode) {
+        existingStyleTag.parentNode.removeChild(existingStyleTag);
+      }
     };
   }, []);
   React.useEffect(() => {
@@ -221,33 +230,93 @@ export const SlidingNav: React.FC<SlidingNavProps> = ({ open, onClose }) => {
             zIndex: 10,
           }}
         >
-          {navLinks.map((link, i) => (
+          {/* Base navigation links */}
+          {baseNavLinks.map((link, i) => (
             <li key={link.href} style={{ marginBlockStart: i === 0 ? "60px" : "0" }}>
-<a
-  href={link.href}
-  style={{
-    fontFamily: '"Jura", sans-serif',
-    letterSpacing: "0.05rem",
-    position: "relative",
-    display: "flex",
-    fontSize: "clamp(2rem, 2.5vw + 0.5rem, 5rem)",
-    fontWeight: 700,
-    textTransform: "uppercase",
-    lineHeight: 1,
-    padding: "0.5rem 6rem 0.5rem 2rem",
-    textDecoration: "none",
-    color: "#222",
-    isolation: "isolate",
-    transition: "color 0.2s",
-    willChange: "transform",
-    /* removed borderBottom for custom underline effect */
-  }}
-  onClick={onClose}
->
-  <span>{link.label}</span>
-</a>
+              <a
+                href={link.href}
+                style={{
+                  fontFamily: '"Jura", sans-serif',
+                  letterSpacing: "0.05rem",
+                  position: "relative",
+                  display: "flex",
+                  fontSize: "clamp(2rem, 2.5vw + 0.5rem, 5rem)",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  lineHeight: 1,
+                  padding: "0.5rem 6rem 0.5rem 2rem",
+                  textDecoration: "none",
+                  color: "#222",
+                  isolation: "isolate",
+                  transition: "color 0.2s",
+                  willChange: "transform",
+                }}
+                onClick={onClose}
+              >
+                <span>{link.label}</span>
+              </a>
             </li>
           ))}
+
+          {/* Authenticated user links */}
+          <SignedIn>
+            {authNavLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  style={{
+                    fontFamily: '"Jura", sans-serif',
+                    letterSpacing: "0.05rem",
+                    position: "relative",
+                    display: "flex",
+                    fontSize: "clamp(2rem, 2.5vw + 0.5rem, 5rem)",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    lineHeight: 1,
+                    padding: "0.5rem 6rem 0.5rem 2rem",
+                    textDecoration: "none",
+                    color: "#222",
+                    isolation: "isolate",
+                    transition: "color 0.2s",
+                    willChange: "transform",
+                  }}
+                  onClick={onClose}
+                >
+                  <span>{link.label}</span>
+                </a>
+              </li>
+            ))}
+          </SignedIn>
+
+          {/* Public/unauthenticated user links */}
+          <SignedOut>
+            {publicNavLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  style={{
+                    fontFamily: '"Jura", sans-serif',
+                    letterSpacing: "0.05rem",
+                    position: "relative",
+                    display: "flex",
+                    fontSize: "clamp(2rem, 2.5vw + 0.5rem, 5rem)",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    lineHeight: 1,
+                    padding: "0.5rem 6rem 0.5rem 2rem",
+                    textDecoration: "none",
+                    color: "#222",
+                    isolation: "isolate",
+                    transition: "color 0.2s",
+                    willChange: "transform",
+                  }}
+                  onClick={onClose}
+                >
+                  <span>{link.label}</span>
+                </a>
+              </li>
+            ))}
+          </SignedOut>
         </ul>
       </nav>
     </>

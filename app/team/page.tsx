@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import TeamLoader from "../../components/TeamLoader";
 import { Hero } from "../../components/ui/void-hero";
 import LiquidGlassDemo from "../../demo/liquidglass-demo";
+import CometCardDemo from "../../demo/comet-card-demo";
 
 
 export default function TeamPage() {
@@ -44,21 +45,7 @@ export default function TeamPage() {
       />
 
       <LiquidGlassDemo />
-
-      <div
-        style={{
-          minHeight: "60vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "#f5f5f5",
-          color: "#222",
-          fontSize: "2rem",
-          fontWeight: 600,
-        }}
-      >
-        Welcome to the Team page!
-      </div>
+      <CometCardDemo />
     </>
   );
 }

@@ -1,4 +1,12 @@
 # Crowdsourced Civic Issue Reporting and Resolution System
+## 💖 Support This Project(UPI)
+
+If you find this project helpful and want to support open-source development for better governance, consider making a donation:
+
+[![Donate](https://img.shields.io/badge/Donate-Support%20Development-ff69b4?style=for-the-badge&logo=heart&logoColor=white)](https://portfolio.raj.software/donate)
+
+*Your support helps maintain and improve this civic technology platform! 🙏*
+
 
 A modern, production-ready civic issue reporting platform built with Next.js, Clerk authentication, and Supabase database integration.
 

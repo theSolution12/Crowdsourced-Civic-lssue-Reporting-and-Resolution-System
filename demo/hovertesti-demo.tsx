@@ -123,12 +123,25 @@ export default function TestimonialDemo() {
     <div className="bg-gradient-to-br from-background via-muted/10 to-background py-12 px-4 sm:px-6 w-full overflow-hidden">
       <div className="max-w-6xl mx-auto space-y-8">
         <div className="text-center space-y-4 mb-12">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
+          <TextAnimate
+            animation="blurInUp"
+            by="word"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground"
+            as="h1"
+            once
+          >
             Community Testimonials
-          </h1>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
+          </TextAnimate>
+          <TextAnimate
+            animation="fadeIn"
+            by="word"
+            delay={0.2}
+            className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto"
+            as="p"
+            once
+          >
             Hear from our early adopters who helped shape this platform.
-          </p>
+          </TextAnimate>
         </div>
 
         <div className="w-full">

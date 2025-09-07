@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
 import { TextAnimate } from "./text-animate";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 interface GalleryItem {
   src: string;
@@ -163,12 +164,26 @@ export default function HeroGallery() {
           {/* Left Side - Text Content */}
           <div className="space-y-10 lg:space-y-12">
             <div className="space-y-8">
+              {/* Lottie Animation at top */}
+              <div className="flex justify-center mb-4">
+                <DotLottieReact
+                  src="https://lottie.host/5b9ce33b-4ce6-4cfe-804a-4f620e303b97/NP0ex683A5.lottie"
+                  loop
+                  autoplay
+                  style={{
+                    width: "120px",
+                    height: "120px",
+                  }}
+                  className="md:w-[180px] md:h-[180px] lg:w-[220px] lg:h-[220px]"
+                />
+              </div>
               {/* Animated Title */}
               <div className="text-center lg:text-left">
                 <TextAnimate
                   animation="blurInUp"
                   by="character"
                   once
+                  delay={0.3}
                   className="text-6xl md:text-7xl lg:text-8xl font-bold text-[#00A73D] tracking-tight"
                   as="h1"
                 >
@@ -176,44 +191,19 @@ export default function HeroGallery() {
                 </TextAnimate>
               </div>
               
-              {/* Subtitle with enhanced styling */}
-              <div className="text-center lg:text-left space-y-4">
-                <p className="text-2xl md:text-3xl lg:text-4xl font-semibold text-slate-800 dark:text-slate-200 leading-tight">
-                  Crowdsourced Project
-                </p>
-                <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">
-                  For civic issue reporting and resolution, empowering communities through technology 
-                  to create a better society where every voice matters.
+              {/* Subtitle with enhanced styling and Lottie */}
+              <div className="text-center lg:text-left space-y-4 flex flex-col items-start">
+                <p className="text-base md:text-lg lg:text-xl text-slate-700 dark:text-slate-200 max-w-2xl">
+                  <span className="inline-block font-extrabold px-3 py-1 mr-3 text-lg md:text-xl lg:text-2xl align-middle border-2 border-[#165DFC] border-dashed rounded-none text-[#165DFC]">
+                    Crowdsourced Project
+                  </span>
+                  <span className="align-middle">
+                    for civic issue reporting and resolution, empowering communities through technology to create a better society where every voice matters.
+                  </span>
                 </p>
               </div>
             </div>
 
-            {/* Enhanced Sanskrit Sloka Section */}
-            <div className="relative">
-              <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-[#00A73D] to-emerald-400 rounded-full"></div>
-              <div className="pl-6 space-y-6">
-                <div className="text-lg md:text-xl font-medium text-slate-700 dark:text-slate-300 leading-relaxed italic">
-                  <TextAnimate
-                    animation="fadeIn"
-                    by="word"
-                    delay={0.5}
-                    className="block mb-2"
-                  >
-                    सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः।
-                  </TextAnimate>
-                  <TextAnimate
-                    animation="fadeIn"
-                    by="word"
-                    delay={0.8}
-                  >
-                    सर्वे भद्राणि पश्यन्तु मा कश्चिद्दुःखभाग्भवेत्॥
-                  </TextAnimate>
-                </div>
-                <div className="text-sm text-slate-500 dark:text-slate-400 font-medium">
-                  — Never Forget Your Roots
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Right Side - Image Cards */}

@@ -3,6 +3,8 @@
 import { cn } from "@/lib/utils";
 import { AlertCircle, Users, CheckCircle } from "lucide-react";
 import type React from "react";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
 
 // The main props for the HowItWorks component
 // (removed empty interface, use type directly)
@@ -96,8 +98,46 @@ export const HowItWorks: React.FC<React.HTMLAttributes<HTMLElement>> = ({
     },
   ];
 
+  const howItWorksRef = useRef<HTMLSpanElement>(null);
+  const qmRef = useRef<HTMLSpanElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    let hasAnimated = false;
+    const animate = () => {
+      if (qmRef.current) {
+        gsap.fromTo(
+          qmRef.current,
+          { opacity: 0, rotation: 0, scale: 1 },
+          { opacity: 1, rotation: 360, duration: 0.7, ease: "power2.out" }
+        );
+      }
+    };
+
+    const observer = new window.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            animate();
+            hasAnimated = true;
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="how-it-works"
       className={cn("w-full bg-background py-8 sm:py-12", className)}
       {...props}
@@ -106,7 +146,12 @@ export const HowItWorks: React.FC<React.HTMLAttributes<HTMLElement>> = ({
         {/* Section Header */}
         <div className="mx-auto mb-16 max-w-4xl text-center">
           <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-            How it works
+            <span ref={howItWorksRef} style={{ display: "inline-block" }}>
+              <span className="how-it-works-text">How it works</span>
+              <span ref={qmRef} className="question-mark" style={{ display: "inline-block", marginLeft: "4px" }}>
+                ?
+              </span>
+            </span>
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Our platform connects citizens with authorities to efficiently report, validate, and resolve civic issues in communities

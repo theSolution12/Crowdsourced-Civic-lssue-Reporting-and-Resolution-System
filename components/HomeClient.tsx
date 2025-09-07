@@ -4,12 +4,12 @@ import RingLoader from "./ring-loader/RingLoader";
 import FAQDemo from "../demo/faq-demo";
 import { FeaturesSectionDemo } from "./ui/Grid-home";
 import { HowItWorks } from "@/components/steps";
-import DarkMirror from "./DarkMirror/DarkMirror";
 import PinnedIntro from "./PinnedIntro";
 import SihHero from "./SihHero";
 import OpenScDemo from "../demo/opensc-demo";
 import LiquidGlassDemo from "../demo/liquidglass-demo";
 import TestimonialDemo from "../demo/hovertesti-demo";
+import HeroGallery from "./ui/hero-gallery";
 
 export default function HomeClient() {
   const [loading, setLoading] = useState(true);
@@ -37,8 +37,8 @@ export default function HomeClient() {
       <LiquidGlassDemo />
       {/* Show PinnedIntro only on desktop, SihHero only on non-desktop */}
       {isDesktop ? <PinnedIntro /> : <SihHero />}
-      <section className="hidden md:block">
-        <DarkMirror />
+      <section>
+        <HeroGallery />
       </section>
       <section>
         <FeaturesSectionDemo />

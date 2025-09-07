@@ -4,6 +4,7 @@ import TeamLoader from "../../components/TeamLoader";
 import { Hero } from "../../components/ui/void-hero";
 import LiquidGlassDemo from "../../demo/liquidglass-demo";
 import CometCardDemo from "../../demo/comet-card-demo";
+import TeamScrollSection from "../../components/TeamScrollSection";
 
 
 export default function TeamPage() {
@@ -46,6 +47,7 @@ export default function TeamPage() {
 
       <LiquidGlassDemo />
       <CometCardDemo />
+      <TeamScrollSection />
     </>
   );
 }

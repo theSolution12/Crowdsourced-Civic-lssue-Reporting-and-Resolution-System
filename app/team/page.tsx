@@ -47,7 +47,7 @@ export default function TeamPage() {
 
       <LiquidGlassDemo />
       <CometCardDemo />
-      <TeamScrollSection />
+      {isDesktop && <TeamScrollSection />}
     </>
   );
 }

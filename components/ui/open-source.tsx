@@ -110,7 +110,7 @@ function OpenSourceCard({
               <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8 17l4 4 4-4m-4-5v9"></path>
               </svg>
-              <span className="text-black">From the community, for the community</span>
+              <span className="text-black">From the community, For the community</span>
             </motion.div>
           </div>
         </motion.a>

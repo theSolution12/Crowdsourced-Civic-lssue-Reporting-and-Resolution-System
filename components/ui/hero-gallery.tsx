@@ -47,26 +47,9 @@ const galleryItems: GalleryItem[] = [
 export default function HeroGallery() {
   const heroRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const textRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const cards = cardsRef.current.filter(Boolean);
-    const textElement = textRef.current;
-
-    // Initial animation for text
-    if (textElement) {
-      gsap.fromTo(textElement.children, {
-        x: -100,
-        opacity: 0,
-      }, {
-        x: 0,
-        opacity: 1,
-        duration: 1,
-        stagger: 0.2,
-        ease: "power3.out",
-        delay: 0.3
-      });
-    }
 
     // Initial animation for cards
     gsap.fromTo(cards, {
@@ -227,7 +210,7 @@ export default function HeroGallery() {
                   </TextAnimate>
                 </div>
                 <div className="text-sm text-slate-500 dark:text-slate-400 font-medium">
-                  — Ancient Sanskrit Prayer for Universal Well-being
+                  — Never Forget Your Roots
                 </div>
               </div>
             </div>

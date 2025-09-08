@@ -18,7 +18,7 @@ const MagicaHands: React.FC<MagicaHandsProps> = ({
   return (
     <section className={`relative w-full overflow-hidden ${height} ${className}`}>
       <iframe
-        src="https://my.spline.design/handsholdingamagicalpearlwithparticles-imz9OppSeC7ZzdsdXyUmssEX/"
+        src="https://my.spline.design/unovacoin-QbFeuim9b0cK5p3ptOXEYVEl/"
         frameBorder={0}
         width="100%"
         height="100%"

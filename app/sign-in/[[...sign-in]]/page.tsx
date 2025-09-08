@@ -29,7 +29,7 @@ export default function SignInPage() {
           </div>
           <div className="flex flex-1 items-center justify-center">
             <div className="w-full max-w-xs">
-              <SignIn />
+              <SignIn routing="path" path="/sign-in" signUpUrl="/sign-up" afterSignInUrl="/" />
             </div>
           </div>
         </div>

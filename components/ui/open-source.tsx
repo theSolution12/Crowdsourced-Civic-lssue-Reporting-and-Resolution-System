@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/button";
 import BlurText from "./blurtext";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
-import { Suspense } from "react";
+ 
+ 
 
 interface Contributor {
   avatar_url: string;
@@ -84,7 +84,7 @@ function OpenSourceCard({
   contributors: Contributor[];
 }) {
   return (
-    <div className="relative grid md:grid-cols-2 gap-8 items-center">
+    <div className="relative grid md:grid-cols-2 gap-8 items-center justify-items-center">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -118,7 +118,7 @@ function OpenSourceCard({
 
       <Separator className="md:hidden" />
 
-      <div className="hidden md:block absolute left-1/2 top-0 h-full">
+      <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 h-full">
         <Separator orientation="vertical" />
       </div>
 
@@ -172,7 +172,7 @@ function OpenSourceContent({
   buttonText?: string;
 }) {
   return (
-    <section className="container relative py-20">
+    <section className="container mx-auto relative py-20 px-4 md:px-6">
       <div className="text-center mb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -193,7 +193,7 @@ function OpenSourceContent({
           <p className="text-xl text-muted-foreground max-w-[800px] mx-auto">
             {description}
           </p>
-          <div className="mt-6">
+          <div className="mt-6 flex justify-center">
             <Button variant="outline" size="lg" className="gap-2" asChild>
               <a
                 href={`https://github.com/${repository}`}

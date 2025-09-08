@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import RingLoader from "./ring-loader/RingLoader";
 import FAQDemo from "../demo/faq-demo";
 import { FeaturesSectionDemo } from "./ui/Grid-home";
 import { HowItWorks } from "@/components/steps";
@@ -10,6 +9,7 @@ import OpenScDemo from "../demo/opensc-demo";
 import LiquidGlassDemo from "../demo/liquidglass-demo";
 import TestimonialDemo from "../demo/hovertesti-demo";
 import HeroGallery from "./ui/hero-gallery";
+import SplashScreen from "./splash/SplashScreen";
 
 export default function HomeClient() {
   const [loading, setLoading] = useState(true);
@@ -29,7 +29,7 @@ export default function HomeClient() {
   }, []);
 
   if (loading) {
-    return <RingLoader />;
+    return <SplashScreen />;
   }
 
   return (

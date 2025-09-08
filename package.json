@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.31.9",
+    "@emailjs/browser": "^4.4.1",
     "@lottiefiles/dotlottie-react": "^0.15.2",
     "@radix-ui/react-avatar": "^1.1.10",
     "@radix-ui/react-dialog": "^1.1.15",
@@ -43,7 +44,8 @@
     "react-icons": "^5.5.0",
     "recharts": "^2.15.4",
     "tailwind-merge": "^3.3.1",
-    "three": "^0.179.1"
+    "three": "^0.179.1",
+    "zod": "^4.1.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

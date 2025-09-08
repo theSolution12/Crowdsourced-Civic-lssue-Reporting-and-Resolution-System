@@ -4,19 +4,14 @@ import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 const isProtectedRoute = createRouteMatcher([
   '/admin(.*)',
   '/verify(.*)',
-]);
-
-// Define public routes (explicitly allow auth routes)
-const isPublicRoute = createRouteMatcher([
-  '/',
-  '/sign-in(.*)',
-  '/sign-up(.*)',
-  '/api/webhooks(.*)',
+  '/contact(.*)'
 ]);
 
 export default clerkMiddleware(async (auth, req) => {
   if (isProtectedRoute(req)) {
-    await auth.protect();
+    // Redirect unauthenticated users to your in-app sign-in route (must be absolute URL in middleware)
+    const signInUrl = new URL('/sign-in', req.nextUrl.origin);
+    await auth.protect({ unauthenticatedUrl: signInUrl.href });
   }
 });
 

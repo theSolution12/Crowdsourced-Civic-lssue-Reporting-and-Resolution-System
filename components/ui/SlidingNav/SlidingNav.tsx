@@ -1,6 +1,6 @@
 // SlidingNav.tsx
 import React from "react";
-import { useUser, SignedIn, SignedOut } from "@clerk/nextjs";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 
 interface SlidingNavProps {
   open: boolean;
@@ -162,7 +162,7 @@ export const SlidingNav: React.FC<SlidingNavProps> = ({ open, onClose }) => {
             height: "100vh",
             borderRadius: "30px 0 0 30px",
             background: "red",
-            transition: "width 600ms cubic-bezier(0.86, 0, 0.672, 1.003)",
+            transition: "width 300ms cubic-bezier(0.86, 0, 0.672, 1.003)",
             zIndex: -2,
           }}
         />
@@ -176,7 +176,7 @@ export const SlidingNav: React.FC<SlidingNavProps> = ({ open, onClose }) => {
             height: "100vh",
             borderRadius: "30px 0 0 30px",
             background: "red",
-            transition: "width 600ms cubic-bezier(0.86, 0, 0.672, 1.003)",
+            transition: "width 300ms cubic-bezier(0.86, 0, 0.672, 1.003)",
             zIndex: -1,
           }}
         />
@@ -227,7 +227,7 @@ export const SlidingNav: React.FC<SlidingNavProps> = ({ open, onClose }) => {
             overflow: "hidden",
             listStyle: "none",
             transform: open ? "translateX(0)" : "translateX(100%)",
-            transition: "transform 1000ms cubic-bezier(0.86, 0, 0.672, 1.003)",
+            transition: "transform 450ms cubic-bezier(0.86, 0, 0.672, 1.003)",
             zIndex: 10,
           }}
         >

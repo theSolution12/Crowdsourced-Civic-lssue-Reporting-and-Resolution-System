@@ -10,6 +10,7 @@ import LiquidGlassDemo from "../demo/liquidglass-demo";
 import TestimonialDemo from "../demo/hovertesti-demo";
 import HeroGallery from "./ui/hero-gallery";
 import SplashScreen from "./splash/SplashScreen";
+import CrowdSection from "./CrowdSection";
 
 export default function HomeClient() {
   const [loading, setLoading] = useState(true);
@@ -53,6 +54,8 @@ export default function HomeClient() {
       <section id="faq">
         <FAQDemo />
       </section>
+      {/* Dedicated crowd banner section */}
+      <CrowdSection />
     </>
   );
 }

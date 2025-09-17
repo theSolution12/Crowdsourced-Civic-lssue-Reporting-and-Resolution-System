@@ -1,5 +1,5 @@
 -- Create users table with Clerk integration
-CREATE TABLE public.users (
+CREATE TABLE IF NOT EXISTS public.users (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
     clerk_id TEXT UNIQUE NOT NULL,
     email TEXT NOT NULL,

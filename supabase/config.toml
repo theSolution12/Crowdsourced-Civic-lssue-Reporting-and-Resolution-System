@@ -1,3 +1,3 @@
 [auth.third_party.clerk]
 enabled = true
-domain = "nearb-redfish-52.clerk.accounts.dev"
+domain = "robust-calf-80.clerk.accounts.dev"

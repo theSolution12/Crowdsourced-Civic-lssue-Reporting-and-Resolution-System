@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import LenisProvider from "../components/providers/LenisProvider";
 import { ClerkProvider, SignedIn, UserButton } from "@clerk/nextjs";
+import { ReactQueryProvider } from "../components/providers/ReactQueryProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -59,7 +60,9 @@ export default function RootLayout({
             </SignedIn>
             {/* When signed out, do not render any icon */}
           </div>
-          <LenisProvider>{children}</LenisProvider>
+          <ReactQueryProvider>
+            <LenisProvider>{children}</LenisProvider>
+          </ReactQueryProvider>
         </body>
       </html>
     </ClerkProvider>

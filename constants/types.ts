@@ -1,0 +1,20 @@
+export type Issue = {
+  id: string;
+  user_id: string;
+  title: string | null;
+  description: string | null;
+  location_data: object | null;
+  image_urls: string[] | null;
+  voice_note_url: string | null;
+  tags: string[] | null;
+  category: string | null;
+  status: string | null;
+  priority: string | null;
+  assigned_department_id: string | null;
+  assigned_officer_id: string | null;
+  upvotes: number;
+  downvotes: number;
+  created_at: string;
+  updated_at: string;
+  resolved_at: string | null;
+}; 

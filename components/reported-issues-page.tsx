@@ -8,8 +8,11 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { AlertTriangle, MapPin, Clock, User, Filter, Search, Eye, Forward } from "lucide-react"
+import { useGetIssues } from "@/lib/hooks/issues/get-issues"
+import { Issue } from "@/constants/types";
 
-const reportedIssues = [
+
+const reportedIssues: Issue[] = [
   {
     id: "RPT-2024-001",
     title: "Large pothole on MG Road",
@@ -17,13 +20,18 @@ const reportedIssues = [
     category: "Road Infrastructure",
     priority: "High",
     status: "Under Review",
-    source: "Public",
-    location: "MG Road, Sector 14",
-    reportedBy: "Rajesh Kumar",
-    reportedAt: "2024-01-15 09:30 AM",
-    department: "Public Works",
-    images: 3,
+    location_data: { address: "MG Road, Sector 14" },
     upvotes: 24,
+    downvotes: 0,
+    created_at: "2024-01-15T09:30:00Z",
+    updated_at: "2024-01-15T09:30:00Z",
+    user_id: "some-user-id-1",
+    image_urls: [],
+    voice_note_url: null,
+    tags: ["pothole", "road"],
+    assigned_department_id: null,
+    assigned_officer_id: null,
+    resolved_at: null,
   },
   {
     id: "RPT-2024-002",
@@ -32,13 +40,18 @@ const reportedIssues = [
     category: "Waste Management",
     priority: "Medium",
     status: "Assigned",
-    source: "Government",
-    location: "Green Park Colony",
-    reportedBy: "Municipal Inspector",
-    reportedAt: "2024-01-15 11:45 AM",
-    department: "Sanitation",
-    images: 2,
+    location_data: { address: "Green Park Colony" },
     upvotes: 18,
+    downvotes: 0,
+    created_at: "2024-01-15T11:45:00Z",
+    updated_at: "2024-01-15T11:45:00Z",
+    user_id: "some-user-id-2",
+    image_urls: [],
+    voice_note_url: null,
+    tags: ["garbage", "hygiene"],
+    assigned_department_id: null,
+    assigned_officer_id: null,
+    resolved_at: null,
   },
   {
     id: "RPT-2024-003",
@@ -47,13 +60,18 @@ const reportedIssues = [
     category: "Public Lighting",
     priority: "High",
     status: "New",
-    source: "Public",
-    location: "Park Street",
-    reportedBy: "Priya Sharma",
-    reportedAt: "2024-01-15 02:15 PM",
-    department: "Electrical",
-    images: 1,
+    location_data: { address: "Park Street" },
     upvotes: 31,
+    downvotes: 0,
+    created_at: "2024-01-15T14:15:00Z",
+    updated_at: "2024-01-15T14:15:00Z",
+    user_id: "some-user-id-3",
+    image_urls: [],
+    voice_note_url: null,
+    tags: ["streetlight", "safety"],
+    assigned_department_id: null,
+    assigned_officer_id: null,
+    resolved_at: null,
   },
   {
     id: "RPT-2024-004",
@@ -62,13 +80,18 @@ const reportedIssues = [
     category: "Drainage",
     priority: "Critical",
     status: "Escalated",
-    source: "Government",
-    location: "Railway Underpass, Station Road",
-    reportedBy: "Traffic Police",
-    reportedAt: "2024-01-15 04:20 PM",
-    department: "Public Works",
-    images: 4,
+    location_data: { address: "Railway Underpass, Station Road" },
     upvotes: 45,
+    downvotes: 0,
+    created_at: "2024-01-15T16:20:00Z",
+    updated_at: "2024-01-15T16:20:00Z",
+    user_id: "some-user-id-4",
+    image_urls: [],
+    voice_note_url: null,
+    tags: ["waterlogging", "underpass"],
+    assigned_department_id: null,
+    assigned_officer_id: null,
+    resolved_at: null,
   },
   {
     id: "RPT-2024-005",
@@ -77,13 +100,18 @@ const reportedIssues = [
     category: "Infrastructure",
     priority: "High",
     status: "Assigned",
-    source: "Public",
-    location: "Central Bus Stand",
-    reportedBy: "Amit Verma",
-    reportedAt: "2024-01-16 08:10 AM",
-    department: "Public Works",
-    images: 2,
+    location_data: { address: "Central Bus Stand" },
     upvotes: 19,
+    downvotes: 0,
+    created_at: "2024-01-16T08:10:00Z",
+    updated_at: "2024-01-16T08:10:00Z",
+    user_id: "some-user-id-5",
+    image_urls: [],
+    voice_note_url: null,
+    tags: ["footbridge", "broken"],
+    assigned_department_id: null,
+    assigned_officer_id: null,
+    resolved_at: null,
   },
   {
     id: "RPT-2024-006",
@@ -92,13 +120,18 @@ const reportedIssues = [
     category: "Sanitation",
     priority: "Critical",
     status: "Escalated",
-    source: "Government",
-    location: "Main Street, Block B",
-    reportedBy: "Municipal Worker",
-    reportedAt: "2024-01-16 10:25 AM",
-    department: "Sanitation",
-    images: 1,
+    location_data: { address: "Main Street, Block B" },
     upvotes: 27,
+    downvotes: 0,
+    created_at: "2024-01-16T10:25:00Z",
+    updated_at: "2024-01-16T10:25:00Z",
+    user_id: "some-user-id-6",
+    image_urls: [],
+    voice_note_url: null,
+    tags: ["manhole", "safety"],
+    assigned_department_id: null,
+    assigned_officer_id: null,
+    resolved_at: null,
   },
   {
     id: "RPT-2024-007",
@@ -107,34 +140,43 @@ const reportedIssues = [
     category: "Waste Management",
     priority: "Medium",
     status: "Under Review",
-    source: "Public",
-    location: "Plot 22, Industrial Area",
-    reportedBy: "Sunita Rao",
-    reportedAt: "2024-01-16 12:40 PM",
-    department: "Sanitation",
-    images: 3,
+    location_data: { address: "Plot 22, Industrial Area" },
     upvotes: 14,
+    downvotes: 0,
+    created_at: "2024-01-16T12:40:00Z",
+    updated_at: "2024-01-16T12:40:00Z",
+    user_id: "some-user-id-7",
+    image_urls: [],
+    voice_note_url: null,
+    tags: ["dumping", "pollution"],
+    assigned_department_id: null,
+    assigned_officer_id: null,
+    resolved_at: null,
   },
 ]
 
 export function ReportedIssuesPage() {
+  const { data, isPending } = useGetIssues();
+
   const [searchTerm, setSearchTerm] = useState("")
   const [sourceFilter, setSourceFilter] = useState("all")
   const [priorityFilter, setPriorityFilter] = useState("all")
   const [statusFilter, setStatusFilter] = useState("all")
 
-  const filteredIssues = reportedIssues.filter((issue) => {
+  const issuesToDisplay = data || reportedIssues;
+
+  const filteredIssues = issuesToDisplay.filter((issue) => {
     const matchesSearch =
-      issue.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      issue.description.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesSource = sourceFilter === "all" || issue.source.toLowerCase() === sourceFilter
-    const matchesPriority = priorityFilter === "all" || issue.priority.toLowerCase() === priorityFilter
-    const matchesStatus = statusFilter === "all" || issue.status.toLowerCase().replace(" ", "-") === statusFilter
+      issue.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      issue.description?.toLowerCase().includes(searchTerm.toLowerCase())
+    const matchesSource = sourceFilter === "all" || (issue.category?.toLowerCase() === sourceFilter) // Assuming category can act as source for now
+    const matchesPriority = priorityFilter === "all" || (issue.priority?.toLowerCase() === priorityFilter)
+    const matchesStatus = statusFilter === "all" || (issue.status?.toLowerCase().replace(" ", "-") === statusFilter)
 
     return matchesSearch && matchesSource && matchesPriority && matchesStatus
   })
 
-  const getPriorityColor = (priority: string) => {
+  const getPriorityColor = (priority: string | null) => {
     switch (priority) {
       case "Critical":
         return "destructive"
@@ -147,7 +189,7 @@ export function ReportedIssuesPage() {
     }
   }
 
-  const getStatusColor = (status: string) => {
+  const getStatusColor = (status: string | null) => {
     switch (status) {
       case "New":
         return "outline"
@@ -160,6 +202,14 @@ export function ReportedIssuesPage() {
       default:
         return "outline"
     }
+  }
+
+  if (isPending) {
+    return (
+      <main className="flex-1 p-3 sm:p-6 space-y-4 sm:space-y-6">
+        <p>Loading issues...</p>
+      </main>
+    )
   }
 
   return (
@@ -262,8 +312,8 @@ export function ReportedIssuesPage() {
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
                         <h3 className="font-semibold text-base sm:text-lg leading-tight">{issue.title}</h3>
-                        <Badge variant={issue.source === "Government" ? "default" : "secondary"} className="w-fit">
-                          {issue.source}
+                        <Badge variant={issue.category === "Government" ? "default" : "secondary"} className="w-fit">
+                          {issue.category}
                         </Badge>
                       </div>
                       <p className="text-sm sm:text-base text-muted-foreground mb-3 leading-relaxed">
@@ -273,15 +323,15 @@ export function ReportedIssuesPage() {
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 text-xs sm:text-sm">
                         <div className="flex items-center gap-2">
                           <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-muted-foreground flex-shrink-0" />
-                          <span className="truncate">{issue.location}</span>
+                          <span className="truncate">{(issue.location_data as any)?.address || 'N/A'}</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <User className="w-3 h-3 sm:w-4 sm:h-4 text-muted-foreground flex-shrink-0" />
-                          <span className="truncate">{issue.reportedBy}</span>
+                          <span className="truncate">{issue.user_id}</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-muted-foreground flex-shrink-0" />
-                          <span className="truncate">{issue.reportedAt}</span>
+                          <span className="truncate">{new Date(issue.created_at).toLocaleString()}</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <span className="text-muted-foreground">Category:</span>
@@ -300,7 +350,7 @@ export function ReportedIssuesPage() {
                         {issue.status}
                       </Badge>
                       <div className="flex items-center gap-2 text-xs text-muted-foreground ml-auto sm:ml-0">
-                        <span>{issue.images} images</span>
+                        <span>{issue.image_urls?.length || 0} images</span>
                         <span>•</span>
                         <span>{issue.upvotes} upvotes</span>
                       </div>

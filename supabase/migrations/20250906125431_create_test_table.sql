@@ -1,5 +1,5 @@
 -- Create test table
-CREATE TABLE public.test_table (
+CREATE TABLE IF NOT EXISTS public.test_table (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     description TEXT,
